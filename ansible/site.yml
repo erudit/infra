@@ -1,1 +1,8 @@
-# MASTER playbook
+---
+- name: Install Apache, MariaDB, Tomcat, Fedora-Commons, Solr
+  hosts: erudit
+  remote_user: root
+  #sudo: yes
+
+  roles:
+    - mariadb
