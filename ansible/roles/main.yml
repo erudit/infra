@@ -1,0 +1,22 @@
+---
+- hosts: montreal:!smtpout.internal.efficios.com
+  remote_user: root
+  vars:
+    ssmtp_root_recipient: admins
+    ssmtp_mailhub: smtpout.internal.efficios.com
+    ssmtp_rewrite_domain: efficios.com
+    ssmtp_from_line_override: NO
+
+  tasks:
+  - name: Install SSMTP (apt)
+    apt: name=ssmtp state=installed update_cache=yes
+    when: ansible_os_family == 'Debian'
+
+  - name: Install SSMTP (yum)
+    yum: name=ssmtp state=installed
+    when: ansible_os_family == 'RedHat'
+
+  - name: Set up ssmtp.conf
+    template: src=ssmtp_conf.j2 dest=/etc/ssmtp/ssmtp.conf
+
+# Default sSMTP configuration.
