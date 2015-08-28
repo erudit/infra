@@ -1,0 +1,8 @@
+#folder
+pacher_cache/
+downloads/
+.vagrant/
+
+#files
+*.box
+*.iso

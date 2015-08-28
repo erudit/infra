@@ -1,8 +1,8 @@
----
-- name: Install Apache, MariaDB, Tomcat, Fedora-Commons, Solr
-  hosts: erudit
-  remote_user: root
-  #sudo: yes
-
-  roles:
-    - mariadb
+- name: just a test of the cache
+  hosts: 
+    - web
+    - app
+    - db
+  tasks:
+    - name: just a ping
+      action: ping

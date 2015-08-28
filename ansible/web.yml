@@ -1,0 +1,9 @@
+---
+- name: Install web
+  hosts: web
+  remote_user: vagrant
+  sudo: yes
+
+  roles:
+    - common
+    - apache
