@@ -1,7 +1,3 @@
 ---
-- hosts: all
-    tasks:
-    - name: Ensure NTP (for time synchronization) is installed.
-        yum: pkg=ntp state=installed
-    - name: Ensure NTP is running.
-        service: name=ntpd state=started enabled=yes
+- name: Create download directory
+  file: path=/vagrant/downloads/ state=directory 
