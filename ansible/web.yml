@@ -1,5 +1,5 @@
 ---
-- name: Install web
+- name: Install Apache
   hosts: web
   remote_user: vagrant
   sudo: yes
