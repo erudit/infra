@@ -1,3 +1,8 @@
 ---
 - name: Create download directory
   file: path=/vagrant/downloads/ state=directory 
+
+- name: Install useful
+  apt: pkg={{ item }}
+  with_items: 
+    - vim

@@ -19,6 +19,8 @@
 [client]
 port		= 3306
 socket		= /var/run/mysqld/mysqld.sock
+user		= root
+password	= {{ mysql_root_password }}
 
 # Here is entries for some specific programs
 # The following values assume you have at least 32M ram
@@ -172,6 +174,3 @@ key_buffer		= 16M
 #
 !includedir /etc/mysql/conf.d/
 
-[client]
-user=root
-password={{ mysql_root_password }}
