@@ -9,20 +9,10 @@
 
 - name: Install MariaDB via apt
   apt: pkg={{ item }} update_cache=yes
-  with_items: 
+  with_items:
     - mariadb-client
     - mariadb-server
     - python-mysqldb
 
-#Adding MariaDB configuration
-- name: Create MariaDB configuration file Debian/Ubuntu
-  template : src=myDebian.cnf.j2 dest=/etc/mysql/my.cnf 
-  notify: restart mysql
- 
-- name: Copy .my.cnf to the root home directory
-  template : src=myDebian.cnf.j2 dest=/root/.my.cnf 
-  notify: restart mysql
-
-- name: Start MariaDB service 
-  service : name=mysql state=started enabled=yes 
-
+- name: Start MariaDB service
+  service : name=mysql state=started enabled=yes
