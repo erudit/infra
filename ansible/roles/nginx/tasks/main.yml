@@ -1,0 +1,17 @@
+---
+  - name: Add Nginx PGP key to remove warning during installation
+    command: apt-key add /vagrant/ansible/roles/nginx/files/nginx_signing.key
+
+  - name: Add Nginx repository
+    apt_repository: repo='deb http://nginx.org/packages/debian/ jessie nginx' state=present
+    apt_repository: repo='deb-src http://nginx.org/packages/debian/ jessie nginx' state=present
+
+  - name: Install Nginx
+    apt: pkg={{ item }} update_cache=yes
+    with_items:
+      - nginx
+      - nginx-full
+      - nginx-common
+
+  - name: Start Nginx
+    service: name=nginx enabled=yes state=started
