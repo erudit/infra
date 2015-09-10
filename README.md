@@ -1,4 +1,10 @@
 # infra
 Infrastructure deployment and automation scripts
 
-**WORK IN PROGRESS**
+## Application
+
+- Apache
+- MariaDB
+- Tomcat
+- SOLR
+- Fedora
