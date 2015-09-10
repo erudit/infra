@@ -1,4 +1,4 @@
 ---
 #Tomcat user and password
-admin_username: admin
-admin_password: admin
+tomcat_admin_username: admin
+tomcat_admin_password: admin

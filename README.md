@@ -7,3 +7,4 @@ Infrastructure deployment and automation scripts
 - Tomcat
 - SOLR
 - Fedora
+- Nginx
