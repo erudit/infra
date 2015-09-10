@@ -1,6 +1,6 @@
 VAGRANTFILE_API_VERSION = "2"
 
-# Ubuntu box
+# Debian box
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use the same key for each machine

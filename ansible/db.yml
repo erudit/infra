@@ -1,7 +1,6 @@
 ---
 - name: Install mariadb
   hosts: db
-  remote_user: vagrant
   sudo: yes
 
   roles:

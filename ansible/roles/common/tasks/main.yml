@@ -1,8 +1,10 @@
 ---
 - name: Create download directory
-  file: path=/vagrant/downloads/ state=directory 
+  file: path=/vagrant/downloads/ state=directory
 
 - name: Install useful
-  apt: pkg={{ item }}
-  with_items: 
+  apt: pkg={{ item }} update_cache=yes
+  with_items:
     - vim
+    - bash-completion
+    - tcpdump

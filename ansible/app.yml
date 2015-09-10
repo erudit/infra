@@ -1,7 +1,6 @@
 ---
 - name: Install tomcat, fedora, solr
   hosts: app
-  remote_user: vagrant
   sudo: yes
 
   roles:

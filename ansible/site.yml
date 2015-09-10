@@ -1,8 +1,0 @@
-- name: just a test of the cache
-  hosts: 
-    - web
-    - app
-    - db
-  tasks:
-    - name: just a ping
-      action: ping
