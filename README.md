@@ -6,5 +6,5 @@ Infrastructure deployment and automation scripts
 - MariaDB
 - Tomcat
 - SOLR
-- Fedora
+- Fedora-Commons
 - Nginx
