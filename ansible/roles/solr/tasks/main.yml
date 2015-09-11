@@ -33,7 +33,7 @@
 
 - name: Copying the schema.xml template
   template: src=/vagrant/ansible/roles/solr/templates/schema.xml.j2 dest={{ solr_home }}/collection1/conf/schema.xml
-  notify: 
+  notify:
   - change ownership solr
 
 - name: Copying the solr.xml template

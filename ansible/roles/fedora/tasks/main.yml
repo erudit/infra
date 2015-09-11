@@ -44,5 +44,5 @@
     notify:
     - change fedora ownership debian
     - change tomcat ownership debian
-    - restart tomcat
+    - restart tomcat7
     when: ansible_os_family == "Debian"

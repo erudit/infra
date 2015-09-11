@@ -3,6 +3,7 @@
   apt: name={{item}} update_cache=yes
   with_items:
       - tomcat7
+      - tomcat7-common
       - tomcat7-admin
 
 - name: Start tomcat7

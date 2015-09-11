@@ -7,4 +7,4 @@
     - common
     - tomcat
     - fedora
-    - solr
+    #1    - solr
