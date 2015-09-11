@@ -23,6 +23,14 @@
 - name: Copy .my.cnf to the root home directory
   template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
 
+- name: Modify my.cnf
+  lineinfile: dest=/etc/mysql/my.cnf regexp="^skip-external-locking" state=absent
+  notify: restart mysql
+
+- name: Modify my.cnf
+  lineinfile: dest=/etc/mysql/my.cnf regexp="^bind-address" state=absent
+  notify: restart mysql
+
 #Delete the useless code
 - name: Delete the anonymous sql server user
   mysql_user: user=""

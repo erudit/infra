@@ -5,7 +5,7 @@ apia.auth.required=false
 database.jdbcDriverClass=com.mysql.jdbc.Driver
 tomcat.ssl.port={{ tomcat_https_port }}
 ssl.available=true
-database.jdbcURL=jdbc:mysql://{{ fedora_db_host }}/{{ fedora_db_name }}?useUnicode\=true&characterEncoding\=UTF-8&autoReconnect\=true
+database.jdbcURL=jdbc:mysql://{{ fedora_db_host }}:3306/{{ fedora_db_name }}?useUnicode\=true&characterEncoding\=UTF-8&autoReconnect\=true
 messaging.uri=vm:(broker:(tcp://localhost:61616))
 database.password={{ fedora_db_password }}
 database.mysql.driver=included
