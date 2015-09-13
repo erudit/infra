@@ -9,7 +9,7 @@ Infrastructure deployment and automation scripts
 - Fedora-Commons
 - Nginx
 
-## How to
+## Usage
 
 1. `git clone https://github.com/erudit/infra.git`
 2. `cd infra`
