@@ -1,0 +1,8 @@
+---
+
+  - name: Install postgresql
+    apt: pkg={{ item }} update_cache=yes
+    with_items:
+      - postgresql-9.4
+      - postgresql-client-9.4
+      - postgresql-common
