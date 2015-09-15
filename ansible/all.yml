@@ -6,3 +6,4 @@
   - include: web.yml
   - include: db.yml
   - include: app.yml
+  - include: gitlab.yml

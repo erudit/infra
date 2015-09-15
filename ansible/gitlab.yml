@@ -1,0 +1,8 @@
+---
+  - name: Install gitlab
+    hosts: gitlab
+    sudo: yes
+
+    roles:
+      - common
+      - gitlab

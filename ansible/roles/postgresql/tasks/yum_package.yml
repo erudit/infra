@@ -1,6 +1,6 @@
 ---
-  
-  - name: Install postgresql
+
+  - name: Install postgresql Redhat
     yum: name={{ item }}
     with_items:
       - postgresql-server

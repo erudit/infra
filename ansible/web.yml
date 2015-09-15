@@ -1,8 +1,8 @@
 ---
-- name: Install Apache
-  hosts: web
-  sudo: yes
+  - name: Install Apache
+    hosts: web
+    sudo: yes
 
-  roles:
-    - common
-    - nginx
+    roles:
+      - common
+      - nginx

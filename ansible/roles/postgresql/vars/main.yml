@@ -1,0 +1,4 @@
+---
+#Configuration
+postgresql_port: 5432
+postgresql_password: postgres

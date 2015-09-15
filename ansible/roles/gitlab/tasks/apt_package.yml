@@ -1,0 +1,9 @@
+---
+  - name: Add gitlab repository
+    apt_repository: repo="deb https://packages.gitlab.com/gitlab/gitlab-ce/debian/ jessie main"
+
+  - name: Add gitlab repository
+    apt_repository: repo="deb-src https://packages.gitlab.com/gitlab/gitlab-ce/debian/ jessie main"
+
+  - name: Install gitlab
+    apt: pkg=gitlab-ce state=present update_cache=yes force=yes

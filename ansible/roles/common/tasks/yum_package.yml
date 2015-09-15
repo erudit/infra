@@ -1,11 +1,8 @@
 ---
-- name: Create downloads directory
-  file: path=/vagrant/downloads/ state=directory
-
-- name: Install useful
-  yum: pkg={{ item }} update_cache=yes
-  with_items:
-    - vim
-    - bash-completion
-    - tcpdump
-    - git
+  - name: Install useful
+    yum: pkg={{ item }}
+    with_items:
+      - vim
+      - bash-completion
+      - tcpdump
+      - git

@@ -1,10 +1,10 @@
 ---
-- name: Install tomcat, fedora, solr
-  hosts: app
-  sudo: yes
+  - name: Install tomcat, fedora, solr
+    hosts: app
+    sudo: yes
 
-  roles:
-    - common
-    - tomcat
-    - fedora
-    #- solr
+    roles:
+      - common
+      - tomcat
+      - fedora
+      #- solr
