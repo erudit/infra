@@ -4,10 +4,12 @@ Infrastructure deployment and automation scripts
 ## Application
 
 - MariaDB
+- PostgreSQL
 - Tomcat
 - SOLR (#TODO)
 - Fedora-Commons
 - Nginx
+- Gitlab
 
 ## Usage
 
