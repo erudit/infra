@@ -1,3 +1,4 @@
 ---
 solr_version: 4.10.3
-solr_home: /var/lib/tomcat/solr
+solr_home_redhat: /var/lib/tomcat/solr
+solr_home_debian: /var/lib/tomcat7/solr

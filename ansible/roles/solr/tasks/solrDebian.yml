@@ -1,0 +1,28 @@
+---
+  - name: Installing the SOLR webapps
+    command: cp /tmp/solr-{{ solr_version }}/dist/solr-{{ solr_version }}.war {{ tomcat_home_debian }}/webapps/solr.war creates="{{ tomcat_home_debian }}/webapps/solr.war"
+
+  - name: Copy commons-logging libs in the Tomcat folder
+    command: cp /vagrant/downloads/commons-logging-1.1.2.jar {{ tomcat_lib_debian }} creates="{{ tomcat_lib_debian }}/commons-logging-1.1.2.jar"
+
+  - name: Copy slf4j libs in the Tomcat folder
+    command: cp /tmp/solr-{{ solr_version }}/example/lib/ext/{{item}} {{ tomcat_lib_debian }} creates="{{ tomcat_lib_debian }}/{{item}}"
+    with_items:
+      - slf4j-api-1.7.6.jar
+      - slf4j-log4j12-1.7.6.jar
+      - log4j-1.2.17.jar
+      - jul-to-slf4j-1.7.6.jar
+      - jcl-over-slf4j-1.7.6.jar
+
+  - name: Installing SOLR
+    command: cp -r /tmp/solr-{{ solr_version }}/example/solr {{ solr_home_debian }} creates="{{ solr_home_debian }}"
+
+  - name: Copying the schema.xml template
+    template: src=schema.xml.j2 dest={{ solr_home_debian }}/collection1/conf/schema.xml
+
+  - name: Copying the solr.xml template
+    template: src=solrDebian.xml.j2 dest={{ tomcat_home_debian }}/conf/Catalina/localhost/solr.xml
+
+  - name: change tomcat ownership debian
+    file: path="{{ tomcat_home_debian }}/" owner=tomcat7 group=tomcat7 state=directory recurse=yes
+    notify: restart tomcat7

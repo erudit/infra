@@ -6,9 +6,9 @@
   service: name=tomcat7 state=restarted
 
 - name: change tomcat ownership redhat
-  file: path=/usr/share/tomcat owner=tomcat group=tomcat state=directory recurse=yes
+  file: path="{{ tomcat_home_redhat}}/" owner=tomcat group=tomcat state=directory recurse=yes
   when: ansible_os_family == 'RedHat'
 
 - name: change tomcat ownership debian
-  file: path=/etc/tomcat7 owner=tomcat7 group=tomcat7 state=directory recurse=yes
+  file: path="{{ tomcat_home_debian }}/" owner=tomcat7 group=tomcat7 state=directory recurse=yes
   when: ansible_os_family == 'Debian'
