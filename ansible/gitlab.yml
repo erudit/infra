@@ -1,8 +1,8 @@
 ---
-  - name: Install gitlab
-    hosts: gitlab
-    sudo: yes
+- name: Install gitlab
+  hosts: gitlab
+  sudo: yes
 
-    roles:
-      - common
-      - gitlab
+  roles:
+    - common
+    - gitlab

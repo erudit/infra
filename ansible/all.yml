@@ -1,9 +1,0 @@
----
-  - name: Install everything
-    hosts: all
-    sudo: yes
-
-  - include: web.yml
-  - include: db.yml
-  - include: app.yml
-  - include: gitlab.yml

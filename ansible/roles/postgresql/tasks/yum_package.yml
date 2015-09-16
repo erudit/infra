@@ -1,7 +1,7 @@
 ---
 
-  - name: Install postgresql Redhat
-    yum: name={{ item }}
-    with_items:
-      - postgresql-server
-      - postgresql-client
+- name: Install postgresql Redhat
+  yum: name={{ item }}
+  with_items:
+    - postgresql-server
+    - postgresql-client

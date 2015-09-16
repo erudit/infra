@@ -1,10 +1,10 @@
 ---
-  - name: Install Tomcat via apt
-    apt: name={{item}} update_cache=yes
-    with_items:
-        - tomcat7
-        - tomcat7-common
-        - tomcat7-admin
+- name: Install Tomcat via apt
+  apt: name={{item}} update_cache=yes
+  with_items:
+    - tomcat7
+    - tomcat7-common
+    - tomcat7-admin
 
-  - name: Start tomcat7
-    service: name=tomcat7 state=started enabled=yes
+- name: Start tomcat7
+  service: name=tomcat7 state=started enabled=yes

@@ -1,12 +1,12 @@
 ---
-  - include: apt_package.yml
-    when: ansible_os_family == "Debian"
-  - include: yum_package.yml
-    when: ansible_os_family == "RedHat"
+- include: apt_package.yml
+  when: ansible_os_family == "Debian"
+- include: yum_package.yml
+  when: ansible_os_family == "RedHat"
 
-  - name: Start postgresql
-    service: name=postgresql state=started enabled=yes
+- name: Start postgresql
+  service: name=postgresql state=started enabled=yes
 
-  - name: Set postgres user password
-    become_user: postgres
-    postgresql_user: name=postgres password={{ postgresql_password }}
+- name: Set postgres user password
+  become_user: postgres
+  postgresql_user: name=postgres password={{ postgresql_password }}

@@ -1,22 +1,22 @@
 ---
-  - name: Install dependencies
-    yum: name={{ item }}
-    with_items:
-      - openssh-server
-      - postfix
-      - curl
+- name: Install dependencies
+  yum: name={{ item }}
+  with_items:
+    - openssh-server
+    - postfix
+    - curl
 
-  - name: Set firewalld rules
-    firewalld: service=http permanent=true state=enabled
+- name: Set firewalld rules
+  firewalld: service=http permanent=true state=enabled
 
-  - name: Start postfix service
-    service: name=postfix enabled=yes state=started
+- name: Start postfix service
+  service: name=postfix enabled=yes state=started
 
-  - name: Start sshd service
-    service: name=sshd enabled=yes state=started
+- name: Start sshd service
+  service: name=sshd enabled=yes state=started
 
-  - name: Add gitlab repository
-    template: src=gitlab_gitlab-ce.repo.j2 dest=/etc/yum.repos.d/gitlab_gitlab-ce.repo
+- name: Add gitlab repository
+  template: src=gitlab_gitlab-ce.repo.j2 dest=/etc/yum.repos.d/gitlab_gitlab-ce.repo
 
-  - name: Install gitlab
-    yum: name=gitlab-ce state=present
+- name: Install gitlab
+  yum: name=gitlab-ce state=present

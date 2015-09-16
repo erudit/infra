@@ -1,36 +1,36 @@
 ---
-  #Install and start Tomcat
-  - include: yum_package.yml
-    when: ansible_os_family == 'RedHat'
-  - include: apt_package.yml
+#Install and start Tomcat
+- include: yum_package.yml
+  when: ansible_os_family == 'RedHat'
+- include: apt_package.yml
+  when: ansible_os_family == 'Debian'
+
+#RedHat/CentOS Tomcat 7 Configuration
+- name: Configure Tomcat server
+  template: src=server.xml.j2 dest=/usr/share/tomcat/conf/server.xml owner=tomcat group=tomcat
+  notify:
+    - restart tomcat
+    - change tomcat ownership redhat
+  when: ansible_os_family == 'RedHat'
+
+- name: Configure Tomcat user
+  template: src=tomcat-users.xml.j2 dest=/usr/share/tomcat/conf/tomcat-users.xml owner=tomcat group=tomcat
+  notify:
+    - restart tomcat
+    - change tomcat ownership redhat
+  when: ansible_os_family == 'RedHat'
+
+#Debian/Ubuntu Tomcat 7 Configuration
+- name: Configure Tomcat server
+  template: src=server.xml.j2 dest=/etc/tomcat7/server.xml owner=tomcat7 group=tomcat7
+  notify:
+    - restart tomcat7
+    - change tomcat ownership debian
     when: ansible_os_family == 'Debian'
 
-  #RedHat/CentOS Tomcat 7 Configuration
-  - name: Configure Tomcat server
-    template: src=server.xml.j2 dest=/usr/share/tomcat/conf/server.xml owner=tomcat group=tomcat
-    notify:
-      - restart tomcat
-      - change tomcat ownership redhat
-    when: ansible_os_family == 'RedHat'
-
-  - name: Configure Tomcat user
-    template: src=tomcat-users.xml.j2 dest=/usr/share/tomcat/conf/tomcat-users.xml owner=tomcat group=tomcat
-    notify:
-      - restart tomcat
-      - change tomcat ownership redhat
-    when: ansible_os_family == 'RedHat'
-
-  #Debian/Ubuntu Tomcat 7 Configuration
-  - name: Configure Tomcat server
-    template: src=server.xml.j2 dest=/etc/tomcat7/server.xml owner=tomcat7 group=tomcat7
-    notify:
-      - restart tomcat7
-      - change tomcat ownership debian
-    when: ansible_os_family == 'Debian'
-
-  - name: Configure Tomcat user
-    template: src=tomcat-users.xml.j2 dest=/etc/tomcat7/tomcat-users.xml owner=tomcat7 group=tomcat7
-    notify:
-      - restart tomcat7
-      - change tomcat ownership debian
-    when: ansible_os_family == 'Debian'
+- name: Configure Tomcat user
+  template: src=tomcat-users.xml.j2 dest=/etc/tomcat7/tomcat-users.xml owner=tomcat7 group=tomcat7
+  notify:
+    - restart tomcat7
+    - change tomcat ownership debian
+  when: ansible_os_family == 'Debian'

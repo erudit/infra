@@ -1,9 +1,9 @@
 ---
-  - name: Install mariadb
-    hosts: db
-    sudo: yes
+- name: Install mariadb
+  hosts: db
+  sudo: yes
 
-    roles:
-      - common
-      - mariadb
-      - postgresql
+  roles:
+    - common
+    - mariadb
+    - postgresql
