@@ -26,7 +26,7 @@
   notify:
     - restart tomcat7
     - change tomcat ownership debian
-    when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: Configure Tomcat user
   template: src=tomcat-users.xml.j2 dest=/etc/tomcat7/tomcat-users.xml owner=tomcat7 group=tomcat7
