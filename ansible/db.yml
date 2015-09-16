@@ -1,5 +1,5 @@
 ---
-- name: Install mariadb
+- name: Install the various database servers
   hosts: db
   sudo: yes
 
