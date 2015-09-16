@@ -5,6 +5,9 @@
 - include: apt_package.yml
   when: ansible_os_family == 'Debian'
 
+#Tomcat password file
+- include_vars: tomcat_pass.yml
+
 #RedHat/CentOS Tomcat 7 Configuration
 - name: Configure Tomcat server
   template: src=server.xml.j2 dest=/usr/share/tomcat/conf/server.xml owner=tomcat group=tomcat
