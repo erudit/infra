@@ -4,6 +4,8 @@
   with_items:
     - vim
     - bash-completion
+    - iputils-ping
+    - bind9-host
     - tcpdump
     - git
     - apt-transport-https
