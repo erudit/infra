@@ -1,7 +1,6 @@
 ---
 #MySQL configuration
 mysql_port: 3306
-mysql_root_password: root
 
 #Tomcat configuration
 tomcat_http_port: 8080

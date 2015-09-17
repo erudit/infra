@@ -1,7 +1,6 @@
 ---
-#Tomcat user and password
+#Tomcat user
 tomcat_admin_username: admin
-tomcat_admin_password: admin
 
 #Tomcat folder
 tomcat_home_debian: /var/lib/tomcat7

@@ -4,6 +4,7 @@
   when: ansible_os_family == 'Debian'
 - include: yum_package.yml
   when: ansible_os_family == 'RedHat'
+- include_vars: mariadb_pass.yml
 
 #Root password
 - name: Change the root password
