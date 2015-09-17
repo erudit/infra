@@ -1,6 +1,4 @@
 ---
-#Task file for installing MariaDB on apt based distros
-
 - name: Install MariaDB via yum
   yum: pkg={{ item }}
   with_items:

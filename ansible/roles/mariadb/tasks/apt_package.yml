@@ -1,6 +1,4 @@
 ---
-#Task file for installing MariaDB on apt based distros
-
 - name: Install MariaDB repository
   apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/ubuntu trusty main' state=present
 

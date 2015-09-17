@@ -3,7 +3,7 @@
   hosts: all
   sudo: yes
 
-- include: web.yml
 - include: db.yml
+- include: web.yml
 - include: app.yml
 - include: gitlab.yml

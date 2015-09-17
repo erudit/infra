@@ -1,3 +1,0 @@
----
-dependencies:
-  - { role: mariadb, dbname: "{{ fedora_db_name }}" }
