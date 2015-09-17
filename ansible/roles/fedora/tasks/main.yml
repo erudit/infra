@@ -3,6 +3,7 @@
   when: ansible_os_family == 'RedHat'
 - include: apt_package.yml
   when: ansible_os_family == 'Debian'
+- include_vars: fedora_pass.yml
 
 - name: Download Fedora-Commons source
   get_url: url=http://sourceforge.net/projects/fedora-commons/files/fedora/{{ fedora_version }}/fcrepo-installer-{{ fedora_version }}.jar dest=/vagrant/downloads/fcrepo-installer-{{ fedora_version }}.jar

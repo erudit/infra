@@ -1,12 +1,8 @@
 ---
-#fedoraAdmin configuration
-fedora_admin_password: fedoraAdmin
-
 #Database Configuration
 fedora_db_host: 192.168.35.12
 fedora_db_name: fedora
 fedora_db_user: fedoraAdmin
-fedora_db_password: fedoraAdmin
 
 #Fedora configuration
 fedora_version: 3.4.2
