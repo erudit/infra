@@ -6,7 +6,7 @@ Infrastructure deployment and automation scripts
 - MariaDB
 - PostgreSQL
 - Tomcat
-- SOLR (#TODO)
+- SOLR
 - Fedora-Commons
 - Nginx
 - Gitlab
@@ -16,7 +16,7 @@ Infrastructure deployment and automation scripts
 1. `git clone https://github.com/erudit/infra.git`
 2. `cd infra`
 3. `vagrant up`
-4. `ansible-playbook all.yml`
+4. `ansible-playbook all.yml --ask-vault-pass`
 
 ## Requirements
 
