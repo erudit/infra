@@ -9,3 +9,5 @@
     - tcpdump
     - git
     - apt-transport-https
+    - sudo
+    - cron
