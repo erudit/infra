@@ -7,9 +7,14 @@
 
 - name: Download Fedora-Commons source
   get_url: url=http://sourceforge.net/projects/fedora-commons/files/fedora/{{ fedora_version }}/fcrepo-installer-{{ fedora_version }}.jar dest=/vagrant/downloads/fcrepo-installer-{{ fedora_version }}.jar
+  when: ansible_os_family == "Debian"
+
+- name: Download Fedora-Commons source
+  get_url: url=http://sourceforge.net/projects/fedora-commons/files/fedora/{{ fedora_version }}/fcrepo-installer-{{ fedora_version }}.jar dest=/home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar
+  when: ansible_os_family == "RedHat"
 
 - name: Copy install.properties
-  template: src=install.propertiesRedhat.j2 dest=/tmp/install.properties
+  template: src=install.propertiesRedHat.j2 dest=/tmp/install.properties
   when: ansible_os_family == "RedHat"
 
 - name: Copy install.properties
@@ -17,7 +22,7 @@
   when: ansible_os_family == "Debian"
 
 - name: Install Fedora-Commons
-  command: /usr/bin/java -jar /vagrant/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat/fedora
+  command: /usr/bin/java -jar /home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat/fedora
   when: ansible_os_family == "RedHat"
 
 - name: Install Fedora-Commons

@@ -6,13 +6,11 @@
   command: cp /vagrant/downloads/commons-logging-1.1.2.jar {{ tomcat_lib_redhat }} creates="{{ tomcat_lib_redhat }}/commons-logging-1.1.2.jar"
 
 - name: Copy slf4j libs in the Tomcat folder
-  command: cp /tmp/solr-{{ solr_version }}/example/lib/ext/{{item}} {{ tomcat_lib_redhat }} creates="{{ tomcat_lib_redhat }}/{{item}}"
+  command: cp /tmp/solr-{{ solr_version }}/example/lib/ext/{{item}} {{ tomcat_lib_redhat }} creates="{{ tomcat_lib_redhat }}/{{item}}" creates="{{ tomcat_lib_redhat }}/{{item}}"
   with_items:
     - slf4j-api-1.7.6.jar
     - slf4j-log4j12-1.7.6.jar
     - log4j-1.2.17.jar
-    - jul-to-slf4j-1.7.6.jar
-    - jcl-over-slf4j-1.7.6.jar
 
 - name: Installing SOLR
   command: cp -r /tmp/solr-{{ solr_version }}/example/solr {{ solr_home_redhat }} creates="{{ solr_home_redhat }}"
@@ -21,7 +19,7 @@
   template: src=schema.xml.j2 dest={{ solr_home_redhat }}/collection1/conf/schema.xml
 
 - name: Copying the solr.xml template
-  template: src=solrredhat.xml.j2 dest={{ tomcat_home_redhat }}/conf/Catalina/localhost/solr.xml
+  template: src=solrRedhat.xml.j2 dest={{ tomcat_home_redhat }}/conf/Catalina/localhost/solr.xml
 
 - name: change tomcat ownership redhat
   file: path="{{ tomcat_home_redhat }}/" owner=tomcat7 group=tomcat7 state=directory recurse=yes
