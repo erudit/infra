@@ -3,5 +3,12 @@
 - name: Install postgresql Redhat
   yum: name={{ item }}
   with_items:
+    - postgresql
+    - postgresql-devel
     - postgresql-server
-    - postgresql-client
+    - postgresql-contrib
+    - python-psycopg2
+
+- name: Setup postgresql
+  command: postgresql-setup initdb
+  ignore_errors: yes
