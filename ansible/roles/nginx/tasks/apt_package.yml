@@ -1,0 +1,7 @@
+---
+- name: Install Nginx Debian
+  apt: pkg={{ item }} update_cache=yes
+  with_items:
+    - nginx
+    - nginx-full
+    - nginx-common
