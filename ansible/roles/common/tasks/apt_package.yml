@@ -1,5 +1,5 @@
 ---
-- name: Install useful
+- name: Install useful package Debian
   apt: pkg={{ item }} update_cache=yes
   with_items:
     - vim

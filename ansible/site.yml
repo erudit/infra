@@ -4,6 +4,6 @@
   sudo: yes
 
 - include: db.yml
-- include: web.yml
-- include: app.yml
 - include: gitlab.yml
+- include: app.yml
+- include: web.yml
