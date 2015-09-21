@@ -4,5 +4,5 @@
 - include: yum_package.yml
   when: ansible_os_family == 'RedHat'
 
-#- name: Configure and start gitlab
-#  command: sudo gitlab-ctl reconfigure
+- name: Configure and start gitlab
+  command: gitlab-ctl reconfigure creates=/opt/gitlab/sv/postgresql
