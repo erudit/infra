@@ -1,7 +1,7 @@
 ---
 #Install and start Tomcat
 - include: yum_package.yml
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'CentOS'
 - include: apt_package.yml
   when: ansible_os_family == 'Debian'
 
@@ -14,14 +14,14 @@
   notify:
     - restart tomcat
     - change tomcat ownership redhat
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'CentOS'
 
 - name: Configure Tomcat user
   template: src=tomcat-users.xml.j2 dest=/usr/share/tomcat/conf/tomcat-users.xml owner=tomcat group=tomcat
   notify:
     - restart tomcat
     - change tomcat ownership redhat
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'CentOS'
 
 #Debian/Ubuntu Tomcat 7 Configuration
 - name: Configure Tomcat server
