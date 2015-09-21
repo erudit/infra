@@ -2,7 +2,7 @@
 - include: apt_package.yml
   when: ansible_os_family == "Debian"
 - include: yum_package.yml
-  when: ansible_os_family == 'CentOS'
+  when: ansible_os_family == 'RedHat'
 - include_vars: postgresql_pass.yml
 
 - name: Start postgresql

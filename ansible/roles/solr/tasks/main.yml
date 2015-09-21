@@ -9,6 +9,6 @@
   unarchive: src=/vagrant/downloads/solr-{{ solr_version }}.tgz dest=/tmp copy=no
 
 - include: solrRedhat.yml
-  when: ansible_os_family == 'CentOS'
+  when: ansible_os_family == 'RedHat'
 - include: solrDebian.yml
   when: ansible_os_family == "Debian"
