@@ -11,11 +11,11 @@
 
 - name: Download Fedora-Commons source
   get_url: url=http://sourceforge.net/projects/fedora-commons/files/fedora/{{ fedora_version }}/fcrepo-installer-{{ fedora_version }}.jar dest=/home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == 'CentOS'
 
 - name: Copy install.properties
   template: src=install.propertiesRedHat.j2 dest=/tmp/install.properties
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == 'CentOS'
 
 - name: Copy install.properties
   template: src=install.propertiesDebian.j2 dest=/tmp/install.properties
@@ -23,7 +23,7 @@
 
 - name: Install Fedora-Commons
   command: /usr/bin/java -jar /home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat/fedora
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == 'CentOS'
 
 - name: Install Fedora-Commons
   command: /usr/bin/java -jar /vagrant/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat7/fedora
@@ -31,7 +31,7 @@
 
 - name: Wait until the webapps are installed Redhat
   wait_for: path=/var/lib/tomcat/webapps/fedora/WEB-INF
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == 'CentOS'
 
 - name: Wait until the webapps are installed Debian
   wait_for: path=/var/lib/tomcat7/webapps/fedora/WEB-INF
@@ -43,7 +43,7 @@
     - change fedora ownership redhat
     - change tomcat ownership redhat
     - restart tomcat
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == 'CentOS'
 
 - name: Copy web.xml in the fedora-commons folder
   template: src=webDebian.xml.j2 dest=/var/lib/tomcat7/webapps/fedora/WEB-INF/web.xml
