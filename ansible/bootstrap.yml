@@ -4,4 +4,6 @@
   sudo: no
   tasks:
     - name: Bootstrap distribution with ansible prerequisite
-      script: scripts/bootstrap_ansible_apt.sh creates=/usr/bin/python
+      script: >
+        scripts/bootstrap_ansible_apt.sh
+        creates=/usr/bin/python
