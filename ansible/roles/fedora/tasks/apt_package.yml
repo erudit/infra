@@ -1,6 +1,6 @@
 ---
 - name: Add Adobe Repo Debian
-  apt_repository: repo="deb http://http.debian.net/debian/ jessie main contrib non-free" state=present
+  apt_repository: repo="deb http://ftp.ca.debian.org/debian// jessie main contrib non-free" state=present
 
 - name: Install flash-plugin package
   apt: name=flashplugin-nonfree state=present update_cache=yes
