@@ -2,6 +2,6 @@
 - name: Install everything
   hosts: all
   sudo: no
-
-- name: Bootstrap distribution with ansible prerequisite
-  script: scripts/bootstrap_ansible_apt.sh creates=/usr/bin/python
+  tasks:
+    - name: Bootstrap distribution with ansible prerequisite
+      script: scripts/bootstrap_ansible_apt.sh creates=/usr/bin/python
