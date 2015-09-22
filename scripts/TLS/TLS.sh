@@ -17,12 +17,12 @@
 
 #------------------------------------------------
 # INFORMATION:
-# Script pour générer le certificat WildCard *.erudit.org pour RapidSSL
-# Au final la situation des clés devrait ressembler à ceci:
-# - .key : la clé privé
-# - .csr : le certificate signing request à envoyer à RapidSSL
-# - .crt : le résultat obtenu de RapidSSL
-# - .pem(s) : les certificats à récupérer:
+# Script to generate the WildCard certificate for *.erudit.org @ RapidSSL
+# In the end, the different key files should look like this :
+# - .key : The private key
+# - .csr : The certificate signing request to be sent to RapidSSL
+# - .crt : The resulting cert from RapidSSL
+# - .pem(s) : Varis intermediary cert to be found : 
 #     - GeoTrust (racine, SHA-1 en 2014)
 #       RapidSSL (intermédiaire, SHA-256)
 #       https://knowledge.rapidssl.com/support/ssl-certificate-support/index?page=content&actp=CROSSLINK&id=SO26457
@@ -33,14 +33,20 @@
 #------------------------------------------------
 # Variables à ajuster
 export DATE=$(date +"%Y%m%d")
-export SITENAME="erudit_org"
+export SITENAME="erudit.org"
 export KEYNAME="${SITENAME}-${DATE}"
-export KEYLEN="2048"                                # 4096 à considérer, mais vérifier load CPU / SPDY / ...(CA à 2048)
-export SHA="sha256"                                 # SHA-512 à considérer, vérifier la compatibilité       (CA à SHA-256).
-export REQSUB="/C=CA/ST=Quebec/L=Montreal/O=Universite de Montreal/OU=Erudit/CN=*.erudit.org/emailAddress=info@erudit.org" # Retiré par CA
-export CONFPATH="./openssl.cnf"                     # Config modifiée: Active les SAN via X509v3 extension, requis pour WildCards
-export SAN="DNS:erudit.org"                         # Voir "ERUDIT:" dans openssl.cnf au besoin
-#export SAN="DNS:erudit.org, DNS:www.erudit.org"    # Exemple avec plus d'un SAN (pour d'autres contextes)
+# 4096 à considérer, mais vérifier load CPU / SPDY / ...(CA à 2048)
+export KEYLEN="2048"
+# SHA-512 à considérer, vérifier la compatibilité       (CA à SHA-256).
+export SHA="sha256"
+ # Retiré par CA
+export REQSUB="/C=CA/ST=Quebec/L=Montreal/O=Universite de Montreal/OU=Erudit/CN=*.erudit.org/emailAddress=info@erudit.org"
+# Config modifiée: Active les SAN via X509v3 extension, requis pour WildCards
+export CONFPATH="../openssl.cnf"
+# Voir "ERUDIT:" dans openssl.cnf au besoin
+export SAN="DNS:${SITENAME}"
+# Exemple avec plus d'un SAN (pour d'autres contextes)
+#export SAN="DNS:erudit.org, DNS:www.erudit.org"    
 
 #--- AVANT L'ACHAT DU .CRT ----------------------
 
@@ -62,16 +68,20 @@ echo "openssl req -new -newkey rsa:${KEYLEN} -nodes -out ${KEYNAME}.csr -keyout 
 openssl req -new -newkey rsa:${KEYLEN} -nodes -out ${KEYNAME}.csr -keyout ${KEYNAME}.key -${SHA} -subj "${REQSUB}" -config ${CONFPATH}
 
 echo "----------------------------------------"
-echo "Verify that the CSR has a proper CN for the wildcard of the site (*.erudit.org) & a SAN for erudit.org"
-openssl req -in ${SITENAME}.csr -noout -text
+echo "Verify that the CSR has a proper CN for the wildcard of the site (*.${SITENAME}) & a SAN for ${SITENAME}"
+openssl req -in ${KEYNAME}.csr -noout -text
+echo
+echo "Manually you can validate the CN and SAN with these commands"
+echo "openssl req -in ${KEYNAME}.csr -noout -text | grep \"Subject:.*, CN=\""
+echo "openssl req -in ${KEYNAME}.csr -noout -text | grep -A 1 \"X509v3 Subject Alternative Name\" | tail -1"
 
 #--- APRÈS AVOIR REÇU LE .CRT -------------------
 
 ### Attendre le certificate (.crt) par courriel une fois la commande passée
-### Copier/coller dans erudit_org-${DATE}.crt
-# cat > SSL_${DATE}/erudit_org-${DATE}.crt
+### Copier/coller dans erudit.org-${DATE}.crt
+# cat > SSL_${DATE}/erudit.org-${DATE}.crt
 
 ### Vérifier le certificat
-# openssl x509 -in erudit_org.crt -text -noout
+# openssl x509 -in erudit.org.crt -text -noout
 
 ### Then move directory, configure Apache, etc...
