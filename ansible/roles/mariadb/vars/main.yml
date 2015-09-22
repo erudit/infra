@@ -2,3 +2,6 @@
 #Fedora-Commons configuration
 fedora_db_name: fedora
 fedora_db_user: fedoraAdmin
+
+#Mariadb config
+mariadb_port: 3306
