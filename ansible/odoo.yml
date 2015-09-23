@@ -1,0 +1,8 @@
+---
+- name: Install Odoo
+  hosts: odoo
+  sudo: yes
+
+  roles:
+    - common
+    - odoo

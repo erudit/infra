@@ -7,3 +7,4 @@
 - include: gitlab.yml
 - include: app.yml
 - include: web.yml
+- include: odoo.yml

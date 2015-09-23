@@ -10,6 +10,7 @@ Infrastructure deployment and automation scripts
 - Fedora-Commons
 - Nginx
 - Gitlab
+- Odoo (In Progress)
 
 ## Usage
 

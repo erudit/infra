@@ -26,6 +26,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vagrant4.vm.box = "debian/jessie64"
     vagrant4.vm.network "private_network", ip: "192.168.35.13"
   end
+  config.vm.define "odoo" do |vagrant5|
+    vagrant5.vm.hostname = "odoo-server"
+    vagrant5.vm.box = "debian/jessie64"
+    vagrant5.vm.network "private_network", ip: "192.168.35.14"
+  end
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
   end

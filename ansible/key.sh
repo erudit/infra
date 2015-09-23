@@ -6,7 +6,7 @@
 
 ansible -m ping all
 
-for (( i=0; i<=3; i++))
+for (( i=0; i<=4; i++))
 do
    ssh-keygen -f "$HOME/.ssh/known_hosts" -R 192.168.35.1$i
 done

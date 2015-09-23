@@ -1,7 +1,7 @@
 ---
 #Debian
 - name: restart mysql
-  service: name=mysql state=restarted
+  service: name=mysql state=restarted enabled=yes
 #Redhat
 - name: restart mariadb
-  service: name=mariadb state=restarted
+  service: name=mariadb state=restarted enabled=yes

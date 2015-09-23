@@ -1,0 +1,15 @@
+---
+- name: Add odoo repository key
+  apt_key: >
+    url=https://nightly.odoo.com/odoo.key
+    state=present
+
+- name: Add odoo repository
+  apt_repository: >
+    repo='deb http://nightly.odoo.com/8.0/nightly/deb/ ./'
+    state=present
+
+- name: Install odoo
+  apt: >
+    name=odoo
+    update_cache=yes
