@@ -8,6 +8,24 @@
 - name: Start postgresql
   service: name=postgresql state=started enabled=yes
 
+- name: Copy configuration file
+  template: >
+    src=pg_hba.conf.j2
+    dest=/etc/postgresql/9.4/main/pg_hba.conf
+
+- name: Copy configuration file
+  template: >
+    src=postgresql.conf.j2
+    dest=/etc/postgresql/9.4/main/postgresql.conf
+
 - name: Set postgres user password
   become_user: postgres
   postgresql_user: name=postgres password={{ postgresql_password }}
+
+- name: Create odoo user
+  become_user: postgres
+  postgresql_user: >
+    name={{ odoo_db_user }}
+    password={{ odoo_db_password }}
+    state=present
+    role_attr_flags=CREATEDB,SUPERUSER

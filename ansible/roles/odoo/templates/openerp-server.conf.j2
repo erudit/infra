@@ -1,0 +1,9 @@
+; {{ ansible_managed }}
+[options]
+; This is the password that allows database operations:
+admin_passwd = {{ odoo_admin_password }}
+db_host = {{ postgresql_host }}
+db_port = {{ postgresql_port }}
+db_user = {{ odoo_db_user }}
+db_password = {{ odoo_db_password }}
+addons_path = /usr/lib/python2.7/dist-packages/openerp/addons

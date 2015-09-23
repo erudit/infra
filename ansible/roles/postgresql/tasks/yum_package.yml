@@ -1,5 +1,4 @@
 ---
-
 - name: Install postgresql Redhat
   yum: name={{ item }}
   with_items:
