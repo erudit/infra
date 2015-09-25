@@ -1,6 +1,16 @@
 ---
 - name: change fedora ownership redhat
-  file: path=/var/lib/tomcat owner=tomcat group=tomcat state=directory recurse=yes
+  file: >
+    path=/var/lib/tomcat
+    owner=tomcat
+    group=tomcat
+    state=directory
+    recurse=yes
 
 - name: change fedora ownership debian
-  file: path=/var/lib/tomcat7 owner=tomcat7 group=tomcat7 state=directory recurse=yes
+  file: >
+    path=/var/lib/tomcat7 
+    owner=tomcat7
+    group=tomcat7
+    state=directory
+    recurse=yes

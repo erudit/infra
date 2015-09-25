@@ -5,4 +5,5 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Configure and start gitlab
-  command: gitlab-ctl reconfigure creates=/opt/gitlab/sv/postgresql
+  command: >
+    gitlab-ctl reconfigure creates=/opt/gitlab/sv/postgresql

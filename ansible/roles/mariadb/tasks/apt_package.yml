@@ -1,16 +1,25 @@
 ---
 - name: Install MariaDB repository
-  apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/ubuntu trusty main' state=present
+  apt_repository: >
+    repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/ubuntu trusty main'
+    state=present
 
 - name: Add repository key to the system
-  apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
+  apt_key: >
+    keyserver=keyserver.ubuntu.com
+    id=0xcbcb082a1bb943db
 
 - name: Install MariaDB via apt
-  apt: pkg={{ item }} update_cache=yes
+  apt: >
+    pkg={{ item }}
+    update_cache=yes
   with_items:
     - mariadb-client
     - mariadb-server
     - python-mysqldb
 
 - name: Start MariaDB service
-  service : name=mysql state=started enabled=yes
+  service: >
+    name=mysql
+    state=started
+    enabled=yes

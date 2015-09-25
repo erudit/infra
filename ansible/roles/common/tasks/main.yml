@@ -5,4 +5,5 @@
   when: ansible_os_family == 'Debian'
 
 - name: Create downloads directory
-  file: path=/vagrant/downloads/ state=directory
+  file: >
+    path=/vagrant/downloads/ state=directory

@@ -13,3 +13,4 @@
   apt: >
     name=odoo
     update_cache=yes
+    state=present

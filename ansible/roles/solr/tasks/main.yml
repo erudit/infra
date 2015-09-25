@@ -1,12 +1,19 @@
 ---
 - name: Downloading SOLR
-  get_url: url=http://archive.apache.org/dist/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz dest=/vagrant/downloads/solr-{{ solr_version }}.tgz
+  get_url: >
+    url=http://archive.apache.org/dist/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz
+    dest=/vagrant/downloads/solr-{{ solr_version }}.tgz
 
 - name: Downloading commons-logging
-  get_url: url=http://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.2/commons-logging-1.1.2.jar dest=/vagrant/downloads/commons-logging-1.1.2.jar
+  get_url: >
+    url=http://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.2/commons-logging-1.1.2.jar
+    dest=/vagrant/downloads/commons-logging-1.1.2.jar
 
 - name: Extracting SOLR
-  unarchive: src=/vagrant/downloads/solr-{{ solr_version }}.tgz dest=/tmp copy=no
+  unarchive: >
+    src=/vagrant/downloads/solr-{{ solr_version }}.tgz
+    dest=/tmp
+    copy=no
 
 - include: solrRedhat.yml
   when: ansible_os_family == 'RedHat'

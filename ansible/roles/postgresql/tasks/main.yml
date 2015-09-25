@@ -6,7 +6,10 @@
 - include_vars: postgresql_pass.yml
 
 - name: Start postgresql
-  service: name=postgresql state=started enabled=yes
+  service: >
+    name=postgresql
+    state=started
+    enabled=yes
 
 - name: Copy configuration file
   template: >
@@ -24,7 +27,9 @@
 
 - name: Set postgres user password
   become_user: postgres
-  postgresql_user: name=postgres password={{ postgresql_password }}
+  postgresql_user: >
+    name=postgres
+    password={{ postgresql_password }}
 
 #Odoo configuration
 - include: odoo.yml

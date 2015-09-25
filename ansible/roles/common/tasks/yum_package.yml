@@ -1,6 +1,7 @@
 ---
 - name: Install useful package Redhat
-  yum: name={{ item }}
+  yum: >
+    name={{ item }}
   with_items:
     - vim
     - bash-completion
