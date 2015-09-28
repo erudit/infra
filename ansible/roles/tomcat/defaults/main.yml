@@ -1,2 +1,15 @@
 ---
+#Tomcat user
+tomcat_admin_username: admin
 tomcat_admin_password: admin
+
+#Tomcat folder when installed from package
+tomcat_home_debian: /var/lib/tomcat7
+tomcat_home_redhat: /usr/share/tomcat
+tomcat_lib_debian: /usr/share/tomcat7/lib
+tomcat_lib_redhat: /usr/share/tomcat/lib
+
+#Tomcat config
+tomcat_http_port: 8080
+tomcat_https_port: 8443
+tomcat_host: localhost

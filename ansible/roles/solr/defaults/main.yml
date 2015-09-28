@@ -1,0 +1,6 @@
+---
+solr_version: 4.10.3
+
+#Tomcat folder when installed from package
+solr_home_redhat: /var/lib/tomcat/solr
+solr_home_debian: /var/lib/tomcat7/solr

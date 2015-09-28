@@ -1,2 +1,9 @@
 ---
+#Configuration
+postgresql_host: localhost
+postgresql_port: 5432
 postgresql_password: postgres
+
+#Odoo Configuration
+odoo_db_user: odoo
+odoo_db_password: odoo
