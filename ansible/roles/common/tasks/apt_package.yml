@@ -1,8 +1,4 @@
 ---
-- name: Bootstrap distribution with ansible prerequisite
-  script: >
-    scripts/bootstrap_ansible_apt.sh creates=/usr/bin/python
-
 - name: Install useful package Debian
   apt: >
     pkg={{ item }}
@@ -17,3 +13,5 @@
     - apt-transport-https
     - sudo
     - cron
+    - python-keyczar
+    - python-selinux
