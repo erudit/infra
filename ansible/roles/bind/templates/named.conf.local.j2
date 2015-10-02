@@ -1,0 +1,30 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "erudit.team" {
+    type master;
+    file "/var/cache/bind/erudit/erudit.team";
+    allow-transfer {
+        192.95.32.24;    # Original IP @ OVH 
+    };  
+    //  allow-update { key rndc-key; };
+};
+
+zone "erudit.org" {
+    type master;
+    file "/var/cache/bind/erudit/erudit.org";
+    allow-transfer {
+        192.95.32.24;           # Original IP @ OVH 
+        132.204.8.131;          # dnsp1.dit.umontreal.ca.
+        132.204.8.141;          # dnsp2.dit.umontreal.ca.
+        132.203.242.68;         # ul-dns-pr-ns03.n.ulaval.ca.
+        2620:0:1af0:dc08::68;   # ul-dns-pr-ns03.n.ulaval.ca. v6
+        147.210.216.1;          # ul-dns-pr-ns04.n.ulaval.ca.
+    };  
+    //  allow-update { key rndc-key; };
+};

@@ -1,0 +1,16 @@
+- include: apt_package.yml
+  when: ansible_os_family == 'Debian'
+
+#- include_vars: .yml
+
+- name: Copy zones configuration files
+
+  file: path=/var/cache/bind/erudit/ state=directory
+  template: >
+    src=erudit.org.j2
+    dest=/var/cache/bind/erudit/erudit.org
+
+#TODO: configuration templates /etc/bind
+
+- name: re-read zone files (config?)
+  command: rndc reload
