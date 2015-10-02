@@ -1,0 +1,10 @@
+---
+- name: Install Redmine
+  apt: >
+    name={{ item }}
+    update_cache=yes
+    state=present
+  with_items:
+    - libapache2-mod-passenger
+    - redmine-mysql
+    - redmine

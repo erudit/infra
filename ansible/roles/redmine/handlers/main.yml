@@ -1,0 +1,6 @@
+---
+- name: restart Apache2 for Redmine / Passenger
+  service: >
+    name=apache2
+    state=restarted
+    enabled=yes
