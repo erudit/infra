@@ -5,7 +5,6 @@
 
   roles:
     - common
-    - mariadb
     - tomcat
     - fedora
     - solr

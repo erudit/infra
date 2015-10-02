@@ -1,0 +1,11 @@
+---
+- name: Install Apache via yum
+  yum: >
+    name=httpd
+    state=present
+
+- name: Start httpd
+  service: >
+    name=httpd
+    state=started
+    enabled=yes
