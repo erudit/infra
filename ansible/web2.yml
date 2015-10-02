@@ -1,9 +1,8 @@
 ---
 - name: Install Nginx
-  hosts: web
+  hosts: web2
   sudo: yes
 
   roles:
     - common
-    - apache
     - nginx
