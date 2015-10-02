@@ -31,6 +31,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vagrant5.vm.box = "debian/jessie64"
     vagrant5.vm.network "private_network", ip: "192.168.35.14"
   end
+  config.vm.define "redmine" do |vagrant6|
+    vagrant6.vm.hostname = "redmine-server"
+    vagrant6.vm.box = "debian/jessie64"
+    vagrant6.vm.network "private_network", ip: "192.168.35.15"
+  end
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
   end
