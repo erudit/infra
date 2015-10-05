@@ -3,9 +3,4 @@
   yum: >
     name=httpd
     state=present
-
-- name: Start httpd
-  service: >
-    name=httpd
-    state=started
-    enabled=yes
+  notify: start httpd
