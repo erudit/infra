@@ -6,5 +6,6 @@
 - include: db.yml
 - include: gitlab.yml
 - include: app.yml
-- include: web.yml
+- include: apache.yml
+- include: nginx.yml
 - include: odoo.yml

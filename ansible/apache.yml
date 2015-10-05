@@ -1,6 +1,6 @@
 ---
-- name: Install Nginx
-  hosts: web1
+- name: Install Apache
+  hosts: apache
   sudo: yes
 
   roles:

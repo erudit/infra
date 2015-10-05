@@ -6,13 +6,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use the same key for each machine
   config.ssh.insert_key = false
 
-  config.vm.define "web1" do |vagrant1|
-    vagrant1.vm.hostname = "web1-server"
+  config.vm.define "apache" do |vagrant1|
+    vagrant1.vm.hostname = "apache-server"
     vagrant1.vm.box = "debian/jessie64"
     vagrant1.vm.network "private_network", ip: "192.168.35.10"
   end
-  config.vm.define "web2" do |vagrant2|
-    vagrant2.vm.hostname = "web2-server"
+  config.vm.define "nginx" do |vagrant2|
+    vagrant2.vm.hostname = "nginx-server"
     vagrant2.vm.box = "debian/jessie64"
     vagrant2.vm.network "private_network", ip: "192.168.35.11"
   end
@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vagrant5.vm.network "private_network", ip: "192.168.35.14"
   end
   config.vm.define "odoo" do |vagrant6|
-    vagrant6.vm.hostname = "odoo6-server"
+    vagrant6.vm.hostname = "odoo-server"
     vagrant6.vm.box = "debian/jessie64"
     vagrant6.vm.network "private_network", ip: "192.168.35.15"
   end
