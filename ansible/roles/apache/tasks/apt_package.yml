@@ -5,3 +5,6 @@
     state=present
   notify:
     - start apache2
+  
+- meta: flush_handlers
+
