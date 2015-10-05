@@ -7,23 +7,17 @@
   template: >
     src=configuration.yml.j2
     dest=/etc/redmine/default/configuration.yml
-  notify:
-    - restart apache2
 
 - name: Copy configuration file for database
   template: >
     src=database.yml.j2
     dest=/etc/redmine/default/database.yml
-  notify:
-    - restart apache2
 
 - name: Copy configuration file for redmine and enable site
   template: >
     src=redmine.conf.j2
     dest=/etc/apache2/sites-available/redmine.conf
   command: a2ensite redmine.conf
-  notify:
-    - restart apache2
 
 - name: Copy configuration file for mod-passenger and enable module
   template: >
@@ -32,9 +26,9 @@
   apache2_module: >
     name=passenger
     state=present
-  notify:
-    - restart apache2
 
 - name: Create link to web directory folder for redmine
   file: src=/usr/share/redmine/public dest=/var/www/redmine state=link
-
+  file: src=/usr/share/redmine/public dest=/var/cache/redmine/default/plugin_assets state=link
+  notify:
+    - restart apache2
