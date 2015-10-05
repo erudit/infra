@@ -1,0 +1,9 @@
+---
+- name: Install redmine
+  hosts: redmine
+  sudo: yes
+
+  roles:
+    - common
+    - apache
+    - redmine

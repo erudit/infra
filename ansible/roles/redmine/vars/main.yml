@@ -1,0 +1,7 @@
+---
+#My configuration
+redmine_db_user: redmine_default
+
+#Database configuration
+mysql_host: localhost
+mysql_port: 3306

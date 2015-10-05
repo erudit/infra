@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vagrant3.vm.network "private_network", ip: "192.168.35.12"
   end
   config.vm.define "db" do |vagrant4|
-    vagrant4.vm.hos45tname = "db-server"
+    vagrant4.vm.hostname = "db-server"
     vagrant4.vm.box = "debian/jessie64"
     vagrant4.vm.network "private_network", ip: "192.168.35.13"
   end

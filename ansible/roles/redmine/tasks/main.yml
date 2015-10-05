@@ -1,3 +1,4 @@
+---
 - include: apt_package.yml
   when: ansible_os_family == 'Debian'
 
@@ -28,7 +29,13 @@
     state=present
 
 - name: Create link to web directory folder for redmine
-  file: src=/usr/share/redmine/public dest=/var/www/redmine state=link
-  file: src=/usr/share/redmine/public dest=/var/cache/redmine/default/plugin_assets state=link
+  file: >
+    src=/usr/share/redmine/public
+    dest=/var/www/redmine
+    state=link
+  file: >
+    src=/usr/share/redmine/public
+    dest=/var/cache/redmine/default/plugin_assets
+    state=link
   notify:
     - restart apache2
