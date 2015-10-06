@@ -3,5 +3,9 @@
 fedora_db_name: fedora
 fedora_db_user: fedoraAdmin
 
+#Redmine configuration
+redmine_db_name: redmine_default
+redmine_db_user: redmine_default
+
 #Mariadb config
 mariadb_port: 3306

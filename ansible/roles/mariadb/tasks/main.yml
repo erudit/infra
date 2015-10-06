@@ -62,3 +62,5 @@
 
 #Fedora-Commons configuration
 - include: fedora.yml
+#Redmine configuration
+- include: redmine.yml
