@@ -4,5 +4,5 @@ redmine_db_user: redmine_default
 redmine_db_name: redmine_default
 
 #Database configuration
-redmine_db_host: 192.168.35.12
+redmine_db_host: 192.168.35.13
 redmine_db_port: 3306

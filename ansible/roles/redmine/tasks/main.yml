@@ -14,16 +14,20 @@
     src=database.yml.j2
     dest=/etc/redmine/default/database.yml
 
-- name: Copy configuration file for redmine and enable site
+- name: Copy configuration file for redmine
   template: >
     src=redmine.conf.j2
     dest=/etc/apache2/sites-available/redmine.conf
+
+- name: Enable site
   command: a2ensite redmine.conf
 
-- name: Copy configuration file for mod-passenger and enable module
+- name: Copy configuration file for mod-passenger
   template: >
     src=passenger.conf.j2
     dest=/etc/apache2/mods-available/passenger.conf
+
+- name: Enable module
   apache2_module: >
     name=passenger
     state=present
