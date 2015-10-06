@@ -11,4 +11,4 @@ tomcat_lib_redhat: /usr/share/tomcat/lib
 #Tomcat config
 tomcat_http_port: 8080
 tomcat_https_port: 8443
-tomcat_host: 192.168.35.11
+tomcat_host: 192.168.35.12
