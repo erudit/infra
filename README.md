@@ -8,16 +8,18 @@ Infrastructure deployment and automation scripts
 - Tomcat
 - SOLR
 - Fedora-Commons
+- Apache
 - Nginx
 - Gitlab
 - Odoo
+- Redmine (In Progress)
 
 ## Usage
 
 1. `git clone https://github.com/erudit/infra.git`
-2. `cd infra`
+2. `cd infra/ansible/`
 3. `vagrant up`
-4. `ansible-playbook all.yml --ask-vault-pass`
+4. `ansible-playbook site.yml`
 
 ## Requirements
 

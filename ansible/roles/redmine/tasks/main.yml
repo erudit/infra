@@ -16,11 +16,10 @@
 
 - name: Copy configuration file for redmine
   template: >
-    src=redmine.conf.j2
-    dest=/etc/apache2/sites-available/redmine.conf
-
-- name: Enable site
-  command: a2ensite redmine.conf
+    src=default.conf.j2
+    dest=/etc/apache2/sites-enabled/default.conf
+  notify:
+    - restart apache2
 
 - name: Copy configuration file for mod-passenger
   template: >
@@ -37,9 +36,19 @@
     src=/usr/share/redmine/public
     dest=/var/www/redmine
     state=link
+
+- name: Change ownership of the redmine folder
   file: >
-    src=/usr/share/redmine/public
-    dest=/var/cache/redmine/default/plugin_assets
-    state=link
-  notify:
-    - restart apache2
+    path=/var/www/redmine/
+    owner=www-data
+    group=www-data
+    recurse=yes
+    state=directory
+
+# - name: Create symbolic link to the plugin directory
+#   file: >
+#     src=/usr/share/redmine/public/
+#     dest=/var/cache/redmine/default/plugin_assets/public
+#     state=link
+#   notify:
+#     - restart apache2
