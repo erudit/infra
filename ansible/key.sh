@@ -4,9 +4,14 @@
 # Execute this script if you just did :
 # 	vagrant destroy and vagrant up
 
+if [[ $@ < 1 ]] ; then 
+    echo "Usage: ./key path/to/Vagrantfile"
+    exit
+fi
+
 ansible -m ping all
 
-for (( i=0; i<=6; i++))
+for i in $(cat $1 | grep ip: | sed 's/.*\"\(.*\)\"/\1/')
 do
-   ssh-keygen -f "$HOME/.ssh/known_hosts" -R 192.168.35.1$i
+   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $i
 done
