@@ -25,9 +25,6 @@ options {
     auth-nxdomain no;    # conform to RFC1035
     listen-on-v6 { any; };
     listen-on { any; };
-    //listen-on-v6 { ::1; };
-    //listen-on { 127.0.0.1; };
-    // Fix this for umontreal.ca erudit.org recursion...
     allow-recursion { 127.0.0.1; ::1; };
 
     // Security measures - 2015-09-02

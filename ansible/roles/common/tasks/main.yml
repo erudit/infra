@@ -7,3 +7,11 @@
 - name: Create downloads directory
   file: >
     path=/vagrant/downloads/ state=directory
+
+- name: Setup locales
+  template: >
+    src=locale.gen.j2
+    dest=/etc/locale.gen
+
+- name: Activate locales
+  command: locale-gen

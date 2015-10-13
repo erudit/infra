@@ -14,21 +14,29 @@
     src=database.yml.j2
     dest=/etc/redmine/default/database.yml
 
-- name: Copy configuration file for redmine
+- name: Copy Apache2 default configuration
   template: >
-    src=default.conf.j2
-    dest=/etc/apache2/sites-enabled/default.conf
-  notify:
-    - restart apache2
+    src=redmine.conf.j2
+    dest=/etc/apache2/sites-available/000-default.conf
+
+#- name: Copy redmine configuration for Apache2
+#  template: >
+#  src=redmine.conf.j2
+#  dest=/etc/apache2/sites-available/redmine.conf
 
 - name: Copy configuration file for mod-passenger
   template: >
     src=passenger.conf.j2
     dest=/etc/apache2/mods-available/passenger.conf
 
-- name: Enable module
+- name: Enable module passenger (ruby)
   apache2_module: >
     name=passenger
+    state=present
+
+- name: Enable module SSL
+  apache2_module: >
+    name=ssl
     state=present
 
 - name: Create link to web directory folder for redmine
@@ -45,10 +53,16 @@
     recurse=yes
     state=directory
 
-# - name: Create symbolic link to the plugin directory
-#   file: >
-#     src=/usr/share/redmine/public/
-#     dest=/var/cache/redmine/default/plugin_assets/public
-#     state=link
-#   notify:
-#     - restart apache2
+- name: Enable redmine in Apache2
+  command: a2ensite 000-default
+
+- name: Generate snakeoil ssl certificate
+  command: openssl req -new -x509 -nodes -out /etc/ssl/private/ssl-cert-snakeoil.crt -keyout /etc/ssl/private/ssl-cert-snakeoil.key -days 3650 -subj '/CN=redmine.erudit.org'
+
+- name: Create symbolic link to the plugin directory
+  file: >
+    src=/usr/share/redmine/public/
+    dest=/var/cache/redmine/default/plugin_assets/public
+    state=link
+  notify:
+    - restart apache2
