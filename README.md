@@ -12,7 +12,7 @@ Infrastructure deployment and automation scripts
 - Nginx
 - Gitlab
 - Odoo
-- Redmine (In Progress)
+- Redmine
 
 ## Usage
 
