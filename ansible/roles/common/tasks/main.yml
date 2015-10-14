@@ -9,9 +9,11 @@
     path=/vagrant/downloads/ state=directory
 
 - name: Setup locales
-  template: >
-    src=locale.gen.j2
-    dest=/etc/locale.gen
-
-- name: Activate locales
-  command: locale-gen
+  locale_gen: >
+    name={{ item }}
+    state=present
+  with_items:
+    - en_CA.UTF-8
+    - en_US.UTF-8
+    - fr_CA.UTF-8
+    - fr_FR.UTF-8

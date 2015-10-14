@@ -1,5 +1,5 @@
 ---
-- name: Install everything
+- name: Install prerequisite
   hosts: all
   sudo: no
   gather_facts: no

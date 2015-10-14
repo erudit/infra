@@ -1,0 +1,8 @@
+---
+- name: Install monitoring tools
+  hosts: monitoring
+  sudo: yes
+
+  roles:
+    - common
+    - munin
