@@ -1,7 +1,8 @@
 ---
 - name: Install useful package Debian
   apt: >
-    pkg={{ item }}
+    name={{ item }}
+    state=present
     update_cache=yes
   with_items:
     - vim

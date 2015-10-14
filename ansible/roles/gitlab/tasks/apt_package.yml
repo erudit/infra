@@ -16,7 +16,7 @@
 
 - name: Install gitlab
   apt: >
-    pkg=gitlab-ce
+    name=gitlab-ce
     state=present
     update_cache=yes
     force=yes

@@ -11,7 +11,7 @@
 
 - name: Install MariaDB via apt
   apt: >
-    pkg={{ item }}
+    name={{ item }}
     update_cache=yes
   with_items:
     - mariadb-client
