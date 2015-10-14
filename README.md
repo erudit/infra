@@ -1,6 +1,19 @@
 # infra
 Infrastructure deployment and automation scripts
 
+## Requirements
+
+* [Ansible](http://www.ansible.com/)
+* [Vagrant](https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/)
+
+## Usage
+
+1. `git clone https://github.com/erudit/infra.git`
+2. `cd infra/ansible/`
+3. `vagrant up`
+4. `ansible-playbook site.yml`
+
 ## Application
 
 - MariaDB
@@ -13,16 +26,3 @@ Infrastructure deployment and automation scripts
 - Gitlab
 - Odoo
 - Redmine
-
-## Usage
-
-1. `git clone https://github.com/erudit/infra.git`
-2. `cd infra/ansible/`
-3. `vagrant up`
-4. `ansible-playbook site.yml`
-
-## Requirements
-
-* [Ansible](http://www.ansible.com/)
-* [Vagrant](https://www.vagrantup.com/)
-* [VirtualBox](https://www.virtualbox.org/)

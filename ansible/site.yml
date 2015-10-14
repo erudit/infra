@@ -9,3 +9,4 @@
 - include: apache.yml
 - include: nginx.yml
 - include: odoo.yml
+- include: redmine.yml
