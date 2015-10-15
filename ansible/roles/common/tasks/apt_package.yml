@@ -16,4 +16,3 @@
     - cron
     - python-keyczar
     - python-selinux
-    - munin-node
