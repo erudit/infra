@@ -1,0 +1,6 @@
+---
+- name: restart munin
+  service: >
+    name=munin
+    state=restarted
+    enabled=yes

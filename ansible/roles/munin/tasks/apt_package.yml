@@ -7,3 +7,5 @@
   with_items:
     - munin
     - munin-node
+    - libcgi-fast-perl
+    - libapache2-mod-fcgid
