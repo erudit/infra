@@ -1,0 +1,10 @@
+- include: apt_package.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Copy BIND9 configuration files
+  template: >
+    src=sshd_config.j2
+    dest=/etc/ssh/sshd_config
+
+- name: Restart sshd with new config
+  service: name=ssh state=restarted
