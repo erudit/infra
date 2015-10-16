@@ -1,0 +1,23 @@
+---
+- include: apt_package.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Activate fcgid module
+  apache2_module: >
+    name=fcgid
+    state=present
+
+- name: Create munin htmldir
+  file: >
+    path=/var/www/munin
+    state=directory
+    owner=munin
+    group=munin
+    recurse=yes
+
+- name: Copy munin.conf file
+  template: >
+    src=munin.conf.j2
+    dest=/etc/munin/munin.conf
+  notify:
+    - restart munin

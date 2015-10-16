@@ -1,7 +1,7 @@
 ---
 - name: Install Tomcat via yum
   yum: >
-    pkg={{item}}
+    name={{item}}
   with_items:
     - tomcat
     - tomcat-webapps

@@ -4,6 +4,13 @@
 - include: apt_package.yml
   when: ansible_os_family == 'Debian'
 
+- name: Copy default configuration file
+  template: >
+    src=default.j2
+    dest=/etc/nginx/sites-available/default
+  notify:
+    - restart nginx
+
 - name: Start Nginx
   service: >
     name=nginx

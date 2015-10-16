@@ -1,7 +1,7 @@
 ---
 - name: Install MariaDB via yum
   yum: >
-    pkg={{ item }}
+    name={{ item }}
   with_items:
     - mariadb
     - mariadb-server

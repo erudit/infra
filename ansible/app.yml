@@ -5,6 +5,7 @@
 
   roles:
     - common
+    - monitoring
     - tomcat
     - fedora
     - solr

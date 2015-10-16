@@ -1,0 +1,11 @@
+---
+- name: Install munin package
+  apt: >
+    name={{ item }}
+    state=present
+    update_cache=yes
+  with_items:
+    - munin
+    - munin-node
+    - libcgi-fast-perl
+    - libapache2-mod-fcgid

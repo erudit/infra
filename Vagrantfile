@@ -41,6 +41,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vagrant7.vm.box = "debian/jessie64"
     vagrant7.vm.network "private_network", ip: "192.168.35.16"
   end
+  config.vm.define "monitoring" do |vagrant8|
+    vagrant8.vm.hostname = "monitoring-server"
+    vagrant8.vm.box = "debian/jessie64"
+    vagrant8.vm.network "private_network", ip: "192.168.35.17"
+  end
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
   end
