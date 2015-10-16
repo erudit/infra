@@ -6,7 +6,7 @@
 # defaulted to the values you see here.
 #
 dbdir	/var/lib/munin
-htmldir /var/www/munin
+htmldir /var/www/html/munin
 logdir /var/log/munin
 rundir  /var/run/munin
 
@@ -96,7 +96,7 @@ graph_period second
 
 # a simple host tree
 [monitoring-server]
-    address 192.168.35.17
+    address 127.0.0.1
     use_node_name yes
 
 #

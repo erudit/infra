@@ -9,7 +9,7 @@
 
 - name: Create munin htmldir
   file: >
-    path=/var/www/munin
+    path=/var/www/html/munin
     state=directory
     owner=munin
     group=munin
@@ -20,4 +20,11 @@
     src=munin.conf.j2
     dest=/etc/munin/munin.conf
   notify:
-    - restart munin
+    - restart munin-node
+
+- name: Copy apache24.conf file
+  template: >
+    src=apache24.conf.j2
+    dest=/etc/munin/apache24.conf
+  notify:
+    - restart apache2
