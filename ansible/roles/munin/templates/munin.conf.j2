@@ -149,3 +149,11 @@ graph_period second
     address {{ hostvars[host]["ansible_eth1"]["ipv4"]["address"] }}
     use_node_name yes
 {% endfor %}
+
+{#
+{% for host in groups['monitored'] %}
+[{{ hostvars[host]["ansible_hostname"] }}]
+    address {{ hostvars[host]["ansible_default_ipv4"]["address"] }}
+    use_node_name yes
+{% endfor %}
+#}
