@@ -14,6 +14,8 @@
     owner=munin
     group=munin
     recurse=yes
+- debug: msg="{{ansible_hostname}}"
+
 
 - name: Copy munin.conf file
   template: >

@@ -1,4 +1,10 @@
 ---
+#Gather facts for every host in the monitored group######
+- hosts: monitored
+  name: Gather facts from monitored server
+  tasks: [ ]
+#########################################################
+
 - name: Install monitoring tools
   hosts: monitoring
   sudo: yes
