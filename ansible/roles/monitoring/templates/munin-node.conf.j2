@@ -34,10 +34,7 @@ ignore_file \.pod$
 # Set this if the client doesn't report the correct hostname when
 # telnetting to localhost, port 4949
 #
-
-{% for host in groups['monitoring'] %}
-host_name {{ hostvars[host]["ansible_hostname"] }}
-{% endfor %}
+host_name {{ ansible_hostname }}
 
 # A list of addresses that are allowed to connect.  This must be a
 # regular expression, since Net::Server does not understand CIDR-style
