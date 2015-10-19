@@ -19,6 +19,7 @@
 apache
 nginx
 app
+db
 gitlab
 odoo
 redmine
