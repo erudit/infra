@@ -26,4 +26,4 @@ Infrastructure deployment and automation scripts
 - Gitlab
 - Odoo
 - Redmine
-- munin
+- Munin & Munin-node

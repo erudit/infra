@@ -6,5 +6,3 @@
     update_cache=yes
   with_items:
     - munin-node
-  notify:
-    - add server as client
