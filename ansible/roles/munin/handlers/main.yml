@@ -4,13 +4,3 @@
     name=munin-node
     state=restarted
     enabled=yes
-
-- name: add server as client
-  blockinfile: >
-    dest=/etc/munin/munin.conf
-    state=present
-    marker="#{mark} ANSIBLE MANAGED BLOCK"
-    block= |
-      [{{ ansible_hostname }}]
-        address {{ ['ansible_eth1']['ipv4']['address'] }}
-        use_node_name yes
