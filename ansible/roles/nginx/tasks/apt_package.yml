@@ -5,5 +5,5 @@
     update_cache=yes
   with_items:
     - nginx
-    - nginx-full
     - nginx-common
+    - nginx-extras

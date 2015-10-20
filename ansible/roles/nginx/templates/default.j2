@@ -22,11 +22,11 @@ server {
 
         server_name _;
 
-        location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ =404;
-        }
+        #location / {
+        #        # First attempt to serve request as file, then
+        #        # as directory, then fall back to displaying a 404.
+        #        try_files $uri $uri/ =404;
+        #}
 
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
@@ -47,7 +47,6 @@ server {
         #}
         location / {
             root    /mnt/media;
-            flv;
             mp4;
             mp4_buffer_size         4M;
             mp4_max_buffer_size     10M;

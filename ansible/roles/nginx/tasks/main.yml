@@ -13,6 +13,6 @@
 
 - name: Start Nginx
   service: >
-    name=nginx
-    enabled=yes
-    state=started
+     name=nginx
+     enabled=yes
+     state=started
