@@ -11,5 +11,6 @@
 
   roles:
     - common
+    - monitoring
     - apache
     - munin
