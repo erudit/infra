@@ -57,7 +57,9 @@
   command: a2ensite 000-default
 
 - name: Generate snakeoil ssl certificate
-  command: openssl req -new -x509 -nodes -out /etc/ssl/private/ssl-cert-snakeoil.crt -keyout /etc/ssl/private/ssl-cert-snakeoil.key -days 3650 -subj '/CN=redmine.erudit.org'
+  command: >
+    openssl req -new -x509 -nodes -out /etc/ssl/private/ssl-cert-snakeoil.crt -keyout /etc/ssl/private/ssl-cert-snakeoil.key -days 3650 -subj '/CN=redmine.erudit.org'
+    creates=/etc/ssl/private/ssl-cert-snakeoil.crt
 
 - name: Create symbolic link to the plugin directory
   file: >
