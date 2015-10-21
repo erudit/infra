@@ -12,5 +12,6 @@
   roles:
     - common
     - monitoring
+    - bind
     - apache
     - munin
