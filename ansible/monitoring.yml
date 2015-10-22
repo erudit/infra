@@ -9,7 +9,7 @@
   hosts: monitoring
   sudo: yes
 
-  roles:
+  roles: 
     - common
     - monitoring
     - bind

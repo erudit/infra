@@ -5,11 +5,7 @@
   gather_facts: no
   tasks:
     - name: "Bootstrap distribution with ansible prerequisite: python"
-      script: >
-        scripts/bootstrap_ansible_apt.sh
-        creates=/usr/bin/python
+      script: scripts/bootstrap_ansible_apt.sh creates=/usr/bin/python
 
     - name: "Bootstrap distribution with ansible prerequisite: sudo"
-      script: >
-        scripts/bootstrap_ansible_apt.sh
-        creates=/usr/bin/sudo
+      script: scripts/bootstrap_ansible_apt.sh creates=/usr/bin/sudo

@@ -3,7 +3,7 @@
   hosts: apache
   sudo: yes
 
-  roles:
+  roles: 
     - common
     - monitoring
     - apache
