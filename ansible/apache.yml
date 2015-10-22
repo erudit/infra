@@ -3,7 +3,8 @@
   hosts: apache
   sudo: yes
 
-  roles: 
+  roles:
     - common
     - monitoring
+    - {role: bind, bind_master: false }
     - apache
