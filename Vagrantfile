@@ -47,6 +47,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vagrant8.vm.network "private_network", ip: "192.168.35.17"
   end
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "1024"
+    vb.memory = "512"
   end
 end
