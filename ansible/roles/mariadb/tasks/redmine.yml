@@ -1,13 +1,13 @@
 ---
 - name: Create the redmine database
-  mysql_db: >
-    name="{{ redmine_db_name }}"
-    state="present"
+  mysql_db:
+    name: "{{ redmine_db_name }}"
+    state: "present"
 
 - name: Create the redmine user
-  mysql_user: >
-    name="{{ redmine_db_user }}"
-    password="{{ redmine_db_password }}"
-    host="192.168.35.0/255.255.255.0"
-    state="present"
-    priv="{{ redmine_db_name }}.*:ALL"
+  mysql_user:
+    name: "{{ redmine_db_user }}"
+    password: "{{ redmine_db_password }}"
+    host: "192.168.35.0/255.255.255.0"
+    state: "present"
+    priv: "{{ redmine_db_name }}.*: ALL"

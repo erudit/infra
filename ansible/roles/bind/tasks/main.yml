@@ -1,25 +1,25 @@
 - include: apt_package.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family ==  'Debian'
 
 - name: Create /var/cache/bind/erudit/ folder
-  file: >
-    path=/var/cache/bind/erudit/
-    state=directory
+  file:
+    path: /var/cache/bind/erudit/
+    state: directory
 
 - name: Copy zones configuration files for erudit.org
-  template: >
-    src=erudit.org.j2
-    dest=/var/cache/bind/erudit/erudit.org
+  template:
+    src: erudit.org.j2
+    dest: /var/cache/bind/erudit/erudit.org
 
 - name: Copy BIND9 configuration files
-  template: >
-    src=named.conf.local.j2
-    dest=/etc/bind/named.conf.local
+  template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
 
 - name: Copy BIND9 configuration files
-  template: >
-    src=named.conf.options.j2
-    dest=/etc/bind/named.conf.options
+  template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
 
 - name: re-read zone files
   command: rndc reload

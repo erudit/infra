@@ -1,14 +1,14 @@
 ---
 - name: Install MariaDB via yum
-  yum: >
-    name={{ item }}
+  yum:
+    name: "{{ item }}"
   with_items:
     - mariadb
     - mariadb-server
     - MySQL-python
 
 - name: Start MariaDB service
-  service: >
-    name=mariadb
-    state=started
-    enabled=yes
+  service:
+    name: mariadb
+    state: started
+    enabled: yes

@@ -1,30 +1,30 @@
 ---
 - include: apt_package.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family ==  'Debian'
 
 - name: Activate fcgid module
-  apache2_module: >
-    name=fcgid
-    state=present
+  apache2_module:
+    name: fcgid
+    state: present
 
 - name: Create munin htmldir
-  file: >
-    path=/var/www/html/munin
-    state=directory
-    owner=munin
-    group=munin
-    recurse=yes
+  file:
+    path: /var/www/html/munin
+    state: directory
+    owner: munin
+    group: munin
+    recurse: yes
 
 - name: Copy munin.conf file
-  template: >
-    src=munin.conf.j2
-    dest=/etc/munin/munin.conf
+  template:
+    src: munin.conf.j2
+    dest: /etc/munin/munin.conf
   notify:
     - restart munin-node
 
 - name: Copy apache24.conf file
-  template: >
-    src=apache24.conf.j2
-    dest=/etc/munin/apache24.conf
+  template:
+    src: apache24.conf.j2
+    dest: /etc/munin/apache24.conf
   notify:
     - restart apache2

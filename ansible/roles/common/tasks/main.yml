@@ -1,17 +1,18 @@
 ---
 - include: yum_package.yml
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family ==  'RedHat'
 - include: apt_package.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family ==  'Debian'
 
 - name: Create downloads directory
-  file: >
-    path=/vagrant/downloads/ state=directory
+  file:
+    path: /vagrant/downloads/
+    state: directory
 
 - name: Setup locales
-  locale_gen: >
-    name={{ item }}
-    state=present
+  locale_gen:
+    name: "{{ item }}"
+    state: present
   with_items:
     - en_CA.UTF-8
     - en_US.UTF-8

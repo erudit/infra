@@ -1,16 +1,16 @@
 ---
 - name: change ownership solr redhat
-  file: >
-    path={{ solr_home_redhat }}
-    owner=tomcat
-    group=tomcat
-    state=directory
-    recurse=yes
+  file:
+    path: "{{ solr_home_redhat }}"
+    owner: tomcat
+    group: tomcat
+    state: directory
+    recurse: yes
 
 - name: change ownership solr debian
-  file: >
-    path={{ solr_home_debian }}
-    owner=tomcat7
-    group=tomcat7
-    state=directory
-    recurse=yes
+  file:
+    path: "{{ solr_home_debian }}"
+    owner: tomcat7
+    group: tomcat7
+    state: directory
+    recurse: yes

@@ -1,10 +1,10 @@
 ---
 - name: Install useful package Debian
-  apt: >
-    name={{ item }}
-    state=present
-    update_cache=yes
-  with_items:
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: 
     - vim
     - bash-completion
     - iputils-ping

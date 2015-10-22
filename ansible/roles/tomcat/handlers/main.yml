@@ -1,28 +1,28 @@
 ---
 - name: restart tomcat
-  service: >
-    name=tomcat
-    state=restarted
+  service: 
+    name: tomcat
+    state: restarted
 
 - name: restart tomcat7
-  service: >
-    name=tomcat7
-    state=restarted
+  service: 
+    name: tomcat7
+    state: restarted
 
 - name: change tomcat ownership redhat
-  file: >
-    path="{{ tomcat_home_redhat}}/"
-    owner=tomcat
-    group=tomcat
-    state=directory
-    recurse=yes
-  when: ansible_os_family == 'RedHat'
+  file: 
+    path: "{{ tomcat_home_redhat}}/"
+    owner: tomcat
+    group: tomcat
+    state: directory
+    recurse: yes
+  when: ansible_os_family ==  'RedHat'
 
 - name: change tomcat ownership debian
-  file: >
-    path="{{ tomcat_home_debian }}/"
-    owner=tomcat7
-    group=tomcat7
-    state=directory
-    recurse=yes
-  when: ansible_os_family == 'Debian'
+  file: 
+    path: "{{ tomcat_home_debian }}/"
+    owner: tomcat7
+    group: tomcat7
+    state: directory
+    recurse: yes
+  when: ansible_os_family ==  'Debian'

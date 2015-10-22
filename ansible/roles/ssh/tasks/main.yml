@@ -1,15 +1,14 @@
 - include: apt_package.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family ==  'Debian'
 
 - name: Copy sshd configuration
-  template: >
-    src=sshd_config.j2
-    dest=/etc/ssh/sshd_config
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
   notify:
-    - restart sshd 
+    - restart sshd
 
 #- name: Copy ssh client configuration
-#  template: >
-#    src=ssh_config.j2
-#    dest=~/.ssh/config
-
+#  template:
+#    src: ssh_config.j2
+#    dest: ~/.ssh/config

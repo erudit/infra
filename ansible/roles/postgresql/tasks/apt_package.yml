@@ -1,8 +1,8 @@
 ---
 - name: Install postgresql Debian
-  apt: >
-    name={{ item }}
-    update_cache=yes
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
   with_items:
     - postgresql-9.4
     - postgresql-client-9.4

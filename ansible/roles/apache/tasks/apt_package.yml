@@ -1,10 +1,9 @@
 ---
 - name: Install Apache via apt
-  apt: >
-    name=apache2
-    state=present
+  apt: 
+    name: apache2
+    state: present
   notify:
     - start apache2
-  
-- meta: flush_handlers
 
+- meta: flush_handlers

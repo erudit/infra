@@ -1,11 +1,11 @@
 ---
 - include: apt_package.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family ==  'Debian'
 - include_vars: odoo_pass.yml
 
 - name: Copy configuration file
-  template: >
-    src=openerp-server.conf.j2
-    dest=/etc/odoo/openerp-server.conf
+  template:
+    src: openerp-server.conf.j2
+    dest: /etc/odoo/openerp-server.conf
   notify:
     - restart odoo

@@ -1,8 +1,8 @@
 ---
 - name: Install Tomcat via apt
-  apt: >
-    name={{item}}
-    update_cache=yes
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
   with_items:
     - tomcat7
     - tomcat7-common

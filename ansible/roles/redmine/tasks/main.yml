@@ -1,70 +1,68 @@
 ---
 - include: apt_package.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family ==  'Debian'
 
 - include_vars: redmine_pass.yml
 
 - name: Copy configuration file for mail
-  template: >
-    src=configuration.yml.j2
-    dest=/etc/redmine/default/configuration.yml
+  template:
+    src: configuration.yml.j2
+    dest: /etc/redmine/default/configuration.yml
 
 - name: Copy configuration file for database
-  template: >
-    src=database.yml.j2
-    dest=/etc/redmine/default/database.yml
+  template:
+    src: database.yml.j2
+    dest: /etc/redmine/default/database.yml
 
 - name: Copy Apache2 default configuration
-  template: >
-    src=redmine.conf.j2
-    dest=/etc/apache2/sites-available/000-default.conf
+  template:
+    src: redmine.conf.j2
+    dest: /etc/apache2/sites-available/000-default.conf
 
 #- name: Copy redmine configuration for Apache2
-#  template: >
-#  src=redmine.conf.j2
-#  dest=/etc/apache2/sites-available/redmine.conf
+#  template:
+#  src: redmine.conf.j2
+#  dest: /etc/apache2/sites-available/redmine.conf
 
 - name: Copy configuration file for mod-passenger
-  template: >
-    src=passenger.conf.j2
-    dest=/etc/apache2/mods-available/passenger.conf
+  template:
+    src: passenger.conf.j2
+    dest: /etc/apache2/mods-available/passenger.conf
 
 - name: Enable module passenger (ruby)
-  apache2_module: >
-    name=passenger
-    state=present
+  apache2_module:
+    name: passenger
+    state: present
 
 - name: Enable module SSL
-  apache2_module: >
-    name=ssl
-    state=present
+  apache2_module:
+    name: ssl
+    state: present
 
 - name: Create link to web directory folder for redmine
-  file: >
-    src=/usr/share/redmine/public
-    dest=/var/www/redmine
-    state=link
+  file:
+    src: /usr/share/redmine/public
+    dest: /var/www/redmine
+    state: link
 
 - name: Change ownership of the redmine folder
-  file: >
-    path=/var/www/redmine/
-    owner=www-data
-    group=www-data
-    recurse=yes
-    state=directory
+  file:
+    path: /var/www/redmine/
+    owner: www-data
+    group: www-data
+    recurse: yes
+    state: directory
 
 - name: Enable redmine in Apache2
   command: a2ensite 000-default
 
 - name: Generate snakeoil ssl certificate
-  command: >
-    openssl req -new -x509 -nodes -out /etc/ssl/private/ssl-cert-snakeoil.crt -keyout /etc/ssl/private/ssl-cert-snakeoil.key -days 3650 -subj '/CN=redmine.erudit.org'
-    creates=/etc/ssl/private/ssl-cert-snakeoil.crt
+  command: openssl req -new -x509 -nodes -out /etc/ssl/private/ssl-cert-snakeoil.crt -keyout /etc/ssl/private/ssl-cert-snakeoil.key -days 3650 -subj '/CN= redmine.erudit.org' creates=/etc/ssl/private/ssl-cert-snakeoil.crt
 
 - name: Create symbolic link to the plugin directory
-  file: >
-    src=/usr/share/redmine/public/
-    dest=/var/cache/redmine/default/plugin_assets/public
-    state=link
+  file:
+    src: /usr/share/redmine/public/
+    dest: /var/cache/redmine/default/plugin_assets/public
+    state: link
   notify:
     - restart apache2

@@ -1,36 +1,36 @@
 ---
 - name: Install dependencies
-  yum: >
-    name={{ item }}
+  yum:
+    name: "{{ item }}"
   with_items:
     - openssh-server
     - postfix
     - curl
 
 - name: Start postfix service
-  service: >
-    name=postfix
-    enabled=yes
-    state=started
+  service:
+    name: postfix
+    enabled: yes
+    state: started
 
 - name: Start sshd service
-  service: >
-    name=sshd
-    enabled=yes
-    state=started
+  service:
+    name: sshd
+    enabled: yes
+    state: started
 
 - name: Add gitlab repository
-  template: >
-    src=gitlab_gitlab-ce.repo.j2
-    dest=/etc/yum.repos.d/gitlab_gitlab-ce.repo
+  template:
+    src: gitlab_gitlab-ce.repo.j2
+    dest: /etc/yum.repos.d/gitlab_gitlab-ce.repo
 
 - name: Add repository key
-  rpm_key: >
-    key=https://packages.gitlab.com/gpg.key
-    state=present
+  rpm_key:
+    key: https://packages.gitlab.com/gpg.key
+    state: present
 
 - name: Install gitlab
-  yum: >
-    name=gitlab-ce
-    state=present
-    update_cache=yes
+  yum:
+    name: gitlab-ce
+    state: present
+    update_cache: yes

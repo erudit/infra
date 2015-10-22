@@ -1,22 +1,22 @@
 ---
 - name: Add repository key
-  apt_key: >
-    url=https://packages.gitlab.com/gpg.key
-    state=present
+  apt_key:
+    url: https://packages.gitlab.com/gpg.key
+    state: present
 
 - name: Add gitlab repository
-  apt_repository: >
-    repo="deb https://packages.gitlab.com/gitlab/gitlab-ce/debian/ jessie main"
-    state=present
+  apt_repository:
+    repo: "deb https://packages.gitlab.com/gitlab/gitlab-ce/debian/ jessie main"
+    state: present
 
 - name: Add gitlab repository
-  apt_repository: >
-    repo="deb-src https://packages.gitlab.com/gitlab/gitlab-ce/debian/ jessie main"
-    state=present
+  apt_repository:
+    repo: "deb-src https://packages.gitlab.com/gitlab/gitlab-ce/debian/ jessie main"
+    state: present
 
 - name: Install gitlab
-  apt: >
-    name=gitlab-ce
-    state=present
-    update_cache=yes
-    force=yes
+  apt:
+    name: gitlab-ce
+    state: present
+    update_cache: yes
+    force: yes

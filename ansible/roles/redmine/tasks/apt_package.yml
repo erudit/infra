@@ -2,21 +2,21 @@
 - include_vars: redmine_pass.yml
 
 - name: Create /etc/redmine/default folder
-  file: >
-    path=/etc/redmine/default
-    state=directory
-    recurse=yes
+  file:
+    path: /etc/redmine/default
+    state: directory
+    recurse: yes
 
 - name: Copy configuration file for database
-  template: >
-    src=database.yml.j2
-    dest=/etc/redmine/default/database.yml
+  template:
+    src: database.yml.j2
+    dest: /etc/redmine/default/database.yml
 
 - name: Install Redmine
-  apt: >
-    name={{ item }}
-    update_cache=yes
-    state=present
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
   with_items:
     - libapache2-mod-passenger
     - redmine-mysql
