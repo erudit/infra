@@ -9,9 +9,9 @@
   hosts: monitoring
   sudo: yes
 
-  roles: 
+  roles:
     - common
     - monitoring
-    - bind
+    - {role: bind, bind_master: true }
     - apache
     - munin
