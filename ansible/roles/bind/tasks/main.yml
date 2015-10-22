@@ -9,7 +9,9 @@
 - name: Copy zones configuration files for erudit.org
   template:
     src: erudit.org.j2
-    dest: /var/cache/bind/erudit/erudit.
+    dest: /var/cache/bind/erudit/erudit.org
+  notify:
+    - re-read zone files
 
 - name: Copy BIND9 configuration files Master
   template:
