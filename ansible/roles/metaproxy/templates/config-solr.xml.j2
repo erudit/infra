@@ -5,7 +5,7 @@
     <route id="start">
       <filter type="frontend_net">
         <threads>10</threads>
-        <port>@:9000</port>
+        <port>{{ ansible_eth1.ipv4.address }}:9000</port>
       </filter>
       <filter type="log">
         <message>F</message>
@@ -15,17 +15,11 @@
 	<torus>
 	  <records>
 	    <record>
-	      <udb>ocs-test</udb>
+	      <udb>solr-erudit</udb>
 	      <cclmap_term>t=z</cclmap_term>
 	      <cclmap_ti>u=title t=z</cclmap_ti>
 	      <sru>solr</sru>
-	      <zurl>ocs-test.indexdata.com/solr/select</zurl>
-	    </record>
-	    <record>
-	      <udb>loc</udb>
-	      <cclmap_term>t=l,r</cclmap_term>
-	      <cclmap_ti>u=4 t=l,r</cclmap_ti>
-	      <zurl>lx2.loc.gov:210/LCDB_MARC8</zurl>
+	      <zurl>{{ solr_ip_address }}/solr/select</zurl>
 	    </record>
 	  </records>
 	</torus>
@@ -36,4 +30,3 @@
     </route>
   </routes>
 </metaproxy>
-
