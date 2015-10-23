@@ -1,3 +1,8 @@
 ---
 - include: apt_package.yml
   when: ansible_os_family == 'Debian'
+
+- name: Copy config-solr.xml
+  template:
+    src: config-solr.xml.j2
+    dest: /usr/share/metaproxy/etc/config-solr.xml
