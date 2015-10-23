@@ -1,0 +1,34 @@
+---
+- name: Add metaproxy repository key
+  apt_key:
+    url: http://ftp.indexdata.dk/debian/indexdata.asc
+    state: present
+
+- name: Add metaproxy repository
+  apt_repository:
+    repo: 'deb http://ftp.indexdata.dk/debian jessie main'
+    state: present
+
+- name: Add metaproxy repository
+  apt_repository:
+    repo: 'deb-src http://ftp.indexdata.dk/debian jessie main'
+    state: present
+
+- name: Install metaproxy depedencies
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - libxslt1-dev
+    - libyazpp6-dev
+    - libboost-dev
+    - libboost-system-dev
+    - libboost-thread-dev
+    - libboost-test-dev
+    - libboost-regex-dev
+    - metaproxy
+    - libmetaproxy6
+    - libmetaproxy6-dev
+    - libmetaproxy6-dbg
+    - yaz-illclient
