@@ -3,9 +3,10 @@
   hosts: app
   sudo: yes
 
-  roles: 
+  roles:
     - common
     - monitoring
+    - metaproxy
     - tomcat
     - fedora
     - solr
