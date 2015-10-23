@@ -3,7 +3,7 @@
   hosts: redmine
   sudo: yes
 
-  roles: 
+  roles:
     - common
     - monitoring
     - apache

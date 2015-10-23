@@ -1,6 +1,6 @@
 ---
 - name: Install Apache via apt
-  apt: 
+  apt:
     name: apache2
     state: present
   notify:

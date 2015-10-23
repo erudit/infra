@@ -1,6 +1,6 @@
 ---
 - name: restart odoo
-  service: 
+  service:
     name: odoo
     state: restarted
     enabled: yes

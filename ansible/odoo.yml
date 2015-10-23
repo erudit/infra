@@ -3,7 +3,7 @@
   hosts: odoo
   sudo: yes
 
-  roles: 
+  roles:
     - common
     - monitoring
     - odoo
