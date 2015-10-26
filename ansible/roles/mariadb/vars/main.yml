@@ -7,5 +7,9 @@ fedora_db_user: fedoraAdmin
 redmine_db_name: redmine_default
 redmine_db_user: redmine_default
 
+#WordPress configuration
+wordpress_db_name: wordpress
+wordpress_db_user: wordpress
+
 #Mariadb config
 mariadb_port: 3306

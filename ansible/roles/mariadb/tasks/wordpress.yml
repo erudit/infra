@@ -1,0 +1,13 @@
+---
+- name: Create the WordPress database
+  mysql_db:
+    name: "{{ wordpress_db_name }}"
+    state: "present"
+
+- name: Create the WordPress user
+  mysql_user:
+    name: "{{ wordpress_db_user }}"
+    password: "{{ wordpress_db_password }}"
+    host: "192.168.35.0/255.255.255.0"
+    state: "present"
+    priv: "{{ wordpress_db_name }}.*: ALL"

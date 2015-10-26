@@ -64,3 +64,5 @@
 - include: fedora.yml
 #Redmine configuration
 - include: redmine.yml
+#WordPress configuration
+- include: wordpress.yml

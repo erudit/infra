@@ -7,3 +7,10 @@
     - start apache2
 
 - meta: flush_handlers
+
+- name: Copy default configuration
+  template:
+    src: 000-default.conf.j2
+    dest: /etc/apache2/sites-available/000-default.conf
+  notify:
+    - restart apache2

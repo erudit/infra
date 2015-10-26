@@ -8,4 +8,5 @@
     - monitoring
     - {role: bind, bind_master: false }
     - apache
-    - {role: php, phpini_folder: /etc/php5/apache2/php.ini }
+    - php
+    - wordpress

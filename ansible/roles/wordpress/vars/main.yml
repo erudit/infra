@@ -1,0 +1,7 @@
+---
+wordpress_version: 4.3.1
+
+#WordPress configuration
+wordpress_db_name: wordpress
+wordpress_db_user: wordpress
+wordpress_db_host: 192.168.35.13

@@ -1,0 +1,19 @@
+---
+- include_vars: wordpress_pass.yml
+
+- name: Download WordPress source
+  get_url:
+    url: "https://en-ca.wordpress.org/wordpress-{{ wordpress_version }}-en_CA.zip"
+    dest: "/tmp/wordpress-{{ wordpress_version }}-en_CA.zip"
+
+- name: Unzip WordPress source
+  unarchive:
+    src: "/tmp/wordpress-{{ wordpress_version }}-en_CA.zip"
+    dest: /var/www/
+    copy: no
+    creates: /var/www/wordpress/
+
+- name: Copy wp-config.php file
+  template:
+    src: wp-config.php.j2
+    dest: /var/www/wordpress/wp-config.php
