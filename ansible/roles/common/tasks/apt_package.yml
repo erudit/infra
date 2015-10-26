@@ -16,3 +16,4 @@
     - cron
     - python-keyczar
     - python-selinux
+    - unzip
