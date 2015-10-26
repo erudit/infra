@@ -5,4 +5,6 @@
 - name: Copy config-solr.xml
   template:
     src: config-solr.xml.j2
-    dest: /usr/share/metaproxy/etc/config-solr.xml
+    dest: /etc/metaproxy/metaproxy.xml
+  notify:
+    - restart metaproxy

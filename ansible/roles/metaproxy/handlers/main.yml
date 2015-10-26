@@ -1,0 +1,6 @@
+---
+- name: restart metaproxy
+  service:
+    name: metaproxy
+    state: restarted
+    enabled: yes

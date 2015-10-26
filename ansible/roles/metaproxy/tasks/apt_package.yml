@@ -14,7 +14,7 @@
     repo: 'deb-src http://ftp.indexdata.dk/debian jessie main'
     state: present
 
-- name: Install metaproxy depedencies
+- name: Install metaproxy with depedencies
   apt:
     name: "{{ item }}"
     state: present
