@@ -5,7 +5,7 @@
     <route id="start">
       <filter type="frontend_net">
         <threads>10</threads>
-        <port>{{ ansible_eth1.ipv4.address }}:9000</port>
+        <port>{{ ansible_eth1.ipv4.address }}:210</port>
       </filter>
       <filter type="log">
         <message>F</message>
@@ -19,7 +19,7 @@
 	      <cclmap_term>t=z</cclmap_term>
 	      <cclmap_ti>u=title t=z</cclmap_ti>
 	      <sru>solr</sru>
-	      <zurl>{{ solr_ip_address }}/solr/select</zurl>
+	      <zurl>{{ solr_ip_address }}:{{ tomcat_port }}/solr/select</zurl>
 	    </record>
 	  </records>
 	</torus>
