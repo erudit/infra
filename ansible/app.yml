@@ -6,7 +6,7 @@
   roles:
     - common
     - monitoring
-    - metaproxy
     - tomcat
     - fedora
     - solr
+    - metaproxy
