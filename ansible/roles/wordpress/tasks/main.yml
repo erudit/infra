@@ -12,8 +12,12 @@
     dest: /var/www/
     copy: no
     creates: /var/www/wordpress/
+    owner: www-data
+    group: www-data
 
 - name: Copy wp-config.php file
   template:
     src: wp-config.php.j2
     dest: /var/www/wordpress/wp-config.php
+    owner: www-data
+    group: www-data
