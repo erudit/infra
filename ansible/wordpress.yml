@@ -1,0 +1,10 @@
+- name: Install WordPress
+  hosts: apache
+  sudo: yes
+
+- include: db.yml
+
+  roles:
+    - common
+    - monitoring
+    - wordpress

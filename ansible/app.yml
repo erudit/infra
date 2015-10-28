@@ -3,6 +3,8 @@
   hosts: app
   sudo: yes
 
+- include: db.yml
+
   roles:
     - common
     - monitoring
