@@ -24,3 +24,7 @@ gitlab
 odoo
 redmine
 monitoring
+
+[webservers:children]
+apache
+nginx
