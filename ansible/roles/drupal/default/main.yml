@@ -1,0 +1,8 @@
+---
+drupal_version: 4.3.1
+
+#Drupal configuration
+drupal_db_name: drupal
+drupal_db_user: drupal
+drupal_db_password: drupal
+drupal_db_host: 192.168.35.13

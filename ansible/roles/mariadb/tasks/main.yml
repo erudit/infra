@@ -66,3 +66,5 @@
 - include: redmine.yml
 #WordPress configuration
 - include: wordpress.yml
+#Drupal configuration
+- include: drupal.yml

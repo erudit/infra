@@ -1,8 +1,8 @@
-- name: Install WordPress
+- name: Install Drupal
   hosts: apache
   sudo: yes
-  
+
   roles:
     - common
     - monitoring
-    - wordpress
+    - drupal

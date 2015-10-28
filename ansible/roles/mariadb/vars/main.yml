@@ -11,5 +11,9 @@ redmine_db_user: redmine_default
 wordpress_db_name: wordpress
 wordpress_db_user: wordpress
 
+#Drupal configuration
+drupal_db_name: drupal
+drupal_db_user: drupal
+
 #Mariadb config
 mariadb_port: 3306

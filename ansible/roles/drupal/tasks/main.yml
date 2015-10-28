@@ -1,0 +1,30 @@
+---
+- include_vars: drupal_pass.yml
+
+#Drush installation
+- include: drush.yml
+
+- name: Download Drupal 7 source
+  get_url:
+    url: "http://ftp.drupal.org/files/projects/drupal-{{ drupal_version }}.tar.gz"
+    dest: "/tmp/drupal-{{ drupal_version }}.tar.gz"
+
+- name: Unzip Drupal source
+  unarchive:
+    src: "/tmp/drupal-{{ drupal_version }}.tar.gz"
+    dest: /var/www/
+    copy: no
+    creates: /var/www/drupal/
+    owner: www-data
+    group: www-data
+
+- name: Rename Drupal folder
+  command: mv /var/www/drupal-{{ drupal_version }}/ /var/www/drupal/
+    creates=/var/www/drupal/
+
+- name: Copy settings.php
+  template:
+    src: settings.php.j2
+    dest: /var/www/drupal/sites/default/settings.php
+    owner: www-data
+    group: www-data

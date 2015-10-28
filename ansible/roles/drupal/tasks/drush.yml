@@ -1,0 +1,20 @@
+---
+- name: Install php-pear
+  apt:
+    name: php-pear
+    state: present
+    update_cache: yes
+
+- name: Add Drush Channel
+  command: pear channel-discover pear.drush.org
+  ignore_errors: yes
+
+# In Ansible 2.0
+#- name: Install drush with pear
+#  pear:
+#    name: drush/drush
+#    state: present
+
+- name: Install drush with pear
+  command: pear install drush/drush
+  ignore_errors: yes

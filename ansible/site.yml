@@ -11,3 +11,5 @@
 - include: nginx.yml
 - include: odoo.yml
 - include: redmine.yml
+- include: wordpress.yml
+- include: drupal.yml

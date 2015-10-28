@@ -1,0 +1,8 @@
+---
+- name: Install WordPress and Drupal
+  hosts: webservers
+  sudo: yes
+
+- include: db.yml
+- include: wordpress.yml
+- include: drupal.yml

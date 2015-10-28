@@ -1,5 +1,5 @@
 ---
-- name: Install php and dependencies for WordPress
+- name: Install php
   apt:
     name: "{{ item }}"
     state: present

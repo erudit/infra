@@ -1,5 +1,6 @@
 ---
-fedora_db_password: fedoraAdmin
 mysql_root_password: root
+fedora_db_password: fedoraAdmin
 redmine_db_password: redmine_default
 wordpress_db_password: wordpress
+drupal_db_password: drupal
