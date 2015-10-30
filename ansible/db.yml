@@ -1,6 +1,6 @@
 ---
 - name: Install the various database servers
-  hosts: db
+  hosts: dbservers
   sudo: yes
 
   roles:

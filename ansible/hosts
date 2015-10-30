@@ -4,7 +4,9 @@
 192.168.35.11
 [app]
 192.168.35.12
-[db]
+[postgresql]
+192.168.35.13
+[mariadb]
 192.168.35.13
 [gitlab]
 192.168.35.14
@@ -16,10 +18,9 @@
 192.168.35.17
 
 [monitored:children]
-apache
-nginx
+webservers
 app
-db
+dbservers
 gitlab
 odoo
 redmine
@@ -28,3 +29,7 @@ monitoring
 [webservers:children]
 apache
 nginx
+
+[dbservers:children]
+mariadb
+postgresql
