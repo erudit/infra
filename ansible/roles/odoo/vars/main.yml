@@ -3,5 +3,8 @@
 odoo_db_user: odoo
 
 #Database configuration
-postgresql_host: 192.168.35.13
+#Vagrant configuration
+postgresql_host: "{{ hostvars[groups['postgresql'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#postgresql_host: "{{ hostvars[groups['postgresql'][0]]['ansible_default_ipv4']['address']}}"
 postgresql_port: 5432

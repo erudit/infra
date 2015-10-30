@@ -4,5 +4,8 @@ redmine_db_user: redmine_default
 redmine_db_name: redmine_default
 
 #Database configuration
-redmine_db_host: 192.168.35.13
+#Vagrant configuration
+redmine_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#redmine_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_default_ipv4']['address']}}"
 redmine_db_port: 3306

@@ -1,6 +1,9 @@
 ---
 #Database Configuration
-fedora_db_host: 192.168.35.13
+#Vagrant configuration
+fedora_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#fedora_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_default_ipv4']['address']}}"
 fedora_db_name: fedora
 fedora_db_user: fedoraAdmin
 

@@ -4,4 +4,7 @@ drupal_version: 7.41
 #Drupal configuration
 drupal_db_name: drupal
 drupal_db_user: drupal
-drupal_db_host: 192.168.35.13
+#Vagrant configuration
+drupal_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#drupal_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_default_ipv4']['address']}}"
