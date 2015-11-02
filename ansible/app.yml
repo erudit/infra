@@ -1,9 +1,7 @@
 ---
 - name: Install tomcat, fedora, solr
-  hosts: app
+  hosts: tomcat
   sudo: yes
-
-- include: db.yml
 
   roles:
     - common

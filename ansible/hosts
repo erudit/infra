@@ -19,11 +19,8 @@
 
 [monitored:children]
 webservers
-app
+appservers
 dbservers
-gitlab
-odoo
-redmine
 monitoring
 
 [webservers:children]
