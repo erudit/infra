@@ -2,7 +2,7 @@
 192.168.35.10
 [nginx]
 192.168.35.11
-[app]
+[tomcat]
 192.168.35.12
 [postgresql]
 192.168.35.13
@@ -33,3 +33,9 @@ nginx
 [dbservers:children]
 mariadb
 postgresql
+
+[appservers:children]
+tomcat
+redmine
+odoo
+gitlab
