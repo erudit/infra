@@ -4,6 +4,6 @@ odoo_db_user: odoo
 odoo_db_password: odoo
 
 #Database configuration
-postgresql_host: 192.168.35.12
+postgresql_host: localhost
 postgresql_port: 5432
 odoo_admin_password: admin

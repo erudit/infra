@@ -5,5 +5,5 @@ redmine_db_password: redmine_default
 redmine_admin_password: redmine_default
 
 #Database configuration
-mysql_host: localhost
-mysql_port: 3306
+redmine_db_host: localhost
+redmine_db_port: 3306
