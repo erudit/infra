@@ -16,13 +16,8 @@
     repo: "deb-src http://packages.icinga.org/debian icinga-jessie main"
     state: present
 
-- name: Install Icinga-web package
+- name: Install icinga
   apt:
-    name: "{{ item }}"
-    state: present
+    name: icinga2
     update_cache: yes
-  with_items:
-    - icingaweb2
-    - icingaweb2-module-doc
-    - icingaweb2-module-monitoring
-    - icingaweb2-module-setup
+    state: present
