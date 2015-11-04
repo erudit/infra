@@ -1,6 +1,4 @@
 ---
-- include_vars: icinga_pass.yml
-
 - name: Add Icinga repository key
   apt_key:
     url: http://packages.icinga.org/icinga.key

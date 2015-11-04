@@ -16,4 +16,4 @@
     - apache
     - munin
     - icinga2
-#    - icingaweb
+    - icingaweb2
