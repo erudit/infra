@@ -1,0 +1,15 @@
+---
+- name: restart icinga2
+  service:
+    name: icinga2
+    state: restarted
+    enabled: yes
+
+- name: import icinga2 default database
+  mysql_db:
+    name: "{{ icinga2_db_name }}"
+    state: "import"
+    target: /usr/share/icinga2-ido-mysql/schema/mysql.sql
+    login_user: "{{ icinga2_db_user }}"
+    login_password: "{{ icinga2_db_password }}"
+    login_host: "{{ icinga2_db_host }}"

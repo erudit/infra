@@ -68,3 +68,5 @@
 - include: wordpress.yml
 #Drupal configuration
 - include: drupal.yml
+#Icinga configuration
+- include: icinga.yml

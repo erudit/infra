@@ -1,0 +1,5 @@
+---
+icinga2_db_name: icinga
+icinga2_db_user: icinga
+icinga2_db_password: icinga
+icinga2_db_host: localhost

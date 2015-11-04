@@ -15,5 +15,9 @@ wordpress_db_user: wordpress
 drupal_db_name: drupal
 drupal_db_user: drupal
 
+#Icinga2 configuration
+icinga2_db_name: icinga
+icinga2_db_user: icinga
+
 #Mariadb config
 mariadb_port: 3306

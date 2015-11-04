@@ -15,5 +15,5 @@
     - {role: bind, bind_master: true }
     - apache
     - munin
-    - icinga
-    - icingaweb
+    - icinga2
+#    - icingaweb

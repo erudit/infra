@@ -1,5 +1,5 @@
 ---
-- include_vars: icinga_pass.yml
+- include_vars: icinga2_pass.yml
 
 - name: Add Icinga repository key
   apt_key:
@@ -18,6 +18,31 @@
 
 - name: Install icinga
   apt:
-    name: icinga2
+    name: "{{ item }}"
     update_cache: yes
     state: present
+  with_items:
+    - icinga2
+    - icinga2-ido-mysql
+    - python-mysqldb
+  notify:
+    - import icinga2 default database
+
+- meta: flush_handlers
+
+- name: Enable icinga2 feature command
+  command: icinga2 feature enable command creates=/etc/icinga2/features-enabled/command.conf
+  notify:
+    - restart icinga2
+
+- name: Enable icinga2 feature ido-mysql
+  command: icinga2 feature enable ido-mysql creates=/etc/icinga2/features-enabled/ido-mysql.conf
+  notify:
+    - restart icinga2
+
+- name: Copy ido-mysql.conf file
+  template:
+    src: ido-mysql.conf.j2
+    dest: /etc/icinga2/features-enabled/ido-mysql.conf
+  notify:
+    - restart icinga2

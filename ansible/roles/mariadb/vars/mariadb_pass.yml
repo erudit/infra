@@ -4,3 +4,4 @@ fedora_db_password: fedoraAdmin
 redmine_db_password: redmine_default
 wordpress_db_password: wordpress
 drupal_db_password: drupal
+icinga2_db_password: icinga

@@ -19,6 +19,11 @@ drupal_db_name: drupal
 drupal_db_user: drupal
 drupal_db_password: drupal
 
+#Icinga2 configuration
+icinga2_db_name: icinga
+icinga2_db_user: icinga
+icinga2_db_password: icinga
+
 #Mariadb config
 mariadb_port: 3306
 mysql_root_password: root

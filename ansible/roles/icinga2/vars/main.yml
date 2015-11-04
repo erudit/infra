@@ -1,0 +1,8 @@
+---
+#Icinga2 configuration
+icinga2_db_name: icinga
+icinga2_db_user: icinga
+# Vagrant configuration only
+icinga2_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#icinga2_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_default_ipv4']['address']}}"
