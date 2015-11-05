@@ -18,3 +18,14 @@
     - en_US.UTF-8
     - fr_CA.UTF-8
     - fr_FR.UTF-8
+
+- name: Copy .bashrc in the root user home folder
+  template:
+    src: .bashrc.j2
+    dest: /root/.bashrc
+
+#### Vagrant Only ####
+- name: Copy .bashrc in the vagrant user home folder
+  template:
+    src: .bashrc.j2
+    dest: /home/vagrant/.bashrc
