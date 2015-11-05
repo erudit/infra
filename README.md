@@ -27,3 +27,6 @@ Infrastructure deployment and automation scripts
 - Odoo
 - Redmine
 - Munin & Munin-node
+- Icinga2 + Icingaweb2 (In progress)
+- Wordpress
+- Drupal
