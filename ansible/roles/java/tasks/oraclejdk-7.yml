@@ -6,7 +6,7 @@
 
 - name: Create Oracle JDK directory
   file:
-    path: /usr/java/jdk1.7.0_80
+    path: "{{ java_directory }}/jdk1.7.0_80"
     state: directory
     owner: root
     group: root
@@ -15,7 +15,7 @@
 - name: Install Oracle JDK
   unarchive:
     src: "{{ download_dir }}/jdk-7u80-linux-x64.tar.gz"
-    dest: /usr/java
+    dest: "{{ java_directory }}"
     owner: root
     group: root
     copy: no
@@ -25,16 +25,16 @@
   alternatives:
     name: java
     link: /usr/bin/java
-    path: /usr/java/jdk1.7.0_80/bin/java
+    path: "{{ java_directory }}/jdk1.7.0_80/bin/java"
 
 - name: Add Java alternatives
   alternatives:
     name: javac
     link: /usr/bin/javac
-    path: /usr/java/jdk1.7.0_80/bin/javac
+    path: "{{ java_directory }}/jdk1.7.0_80/bin/javac"
 
 - name: Add Java alternatives
   alternatives:
     name: javaws
     link: /usr/bin/javaws
-    path: /usr/java/jdk1.7.0_80/bin/javaws
+    path: "{{ java_directory }}/jdk1.7.0_80/bin/javaws"
