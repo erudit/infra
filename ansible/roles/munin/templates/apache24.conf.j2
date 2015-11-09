@@ -1,7 +1,7 @@
 # {{ ansible_managed }}
 
-Alias /munin /var/www/html/munin
-<Directory /var/www/html/munin>
+Alias /munin {{ munin_htmldir }}
+<Directory {{ munin_htmldir }}>
         #Require local
         #Options None
         Require all granted

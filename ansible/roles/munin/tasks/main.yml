@@ -9,7 +9,7 @@
 
 - name: Create munin htmldir
   file:
-    path: /var/www/html/munin
+    path: "{{ munin_htmldir }}"
     state: directory
     owner: munin
     group: munin

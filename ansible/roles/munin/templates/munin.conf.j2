@@ -6,14 +6,14 @@
 # must be writable by the user running munin-cron.  They are all
 # defaulted to the values you see here.
 #
-dbdir	/var/lib/munin
-htmldir /var/www/html/munin
-logdir /var/log/munin
-rundir  /var/run/munin
+dbdir	{{ munin_dbdir }}
+htmldir {{ munin_htmldir }}
+logdir {{ munin_logdir }}
+rundir  {{ munin_rundir }}
 
 # Where to look for the HTML templates
 #
-tmpldir	/etc/munin/templates
+munin_tmpldir	{{ munin_tmpldir }}
 
 # Where to look for the static www files
 #
