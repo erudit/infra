@@ -1,0 +1,5 @@
+---
+# Vagrant configuration
+download_dir: /vagrant/downloads
+# Server configuration
+# download_dir: /tmp

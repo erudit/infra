@@ -3,7 +3,7 @@
   command: cp /tmp/solr-{{ solr_version }}/dist/solr-{{ solr_version }}.war {{ tomcat_home_debian }}/webapps/solr.war creates="{{ tomcat_home_debian }}/webapps/solr.war"
 
 - name: Copy commons-logging libs in the Tomcat folder
-  command: cp /vagrant/downloads/commons-logging-1.1.2.jar {{ tomcat_lib_debian }} creates="{{ tomcat_lib_debian }}/commons-logging-1.1.2.jar"
+  command: cp {{ download_dir }}/commons-logging-1.1.2.jar {{ tomcat_lib_debian }} creates="{{ tomcat_lib_debian }}/commons-logging-1.1.2.jar"
 
 - name: Copy slf4j libs in the Tomcat folder
   command: cp /tmp/solr-{{ solr_version }}/example/lib/ext/{{item}} {{ tomcat_lib_debian }} creates="{{ tomcat_lib_debian }}/{{item}}"
