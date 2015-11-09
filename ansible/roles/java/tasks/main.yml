@@ -1,0 +1,49 @@
+---
+- name: Install openjdk 7
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - openjdk-7-jdk
+    - openjdk-7-jre
+
+- name: Download Oracle JDK
+  command: curl -L  -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o "{{ download_dir }}/jdk-7u80-linux-x64.tar.gz" http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+  args:
+    creates: "{{ download_dir }}/jdk-7u80-linux-x64.tar.gz"
+
+- name: Create Oracle JDK directory
+  file:
+    path: /usr/java/jdk1.7.0_80
+    state: directory
+    owner: root
+    group: root
+    mode: "u=rwx,go=rx"
+
+- name: Install Oracle JDK
+  unarchive:
+    src: "{{ download_dir }}/jdk-7u80-linux-x64.tar.gz"
+    dest: /usr/java
+    owner: root
+    group: root
+    copy: no
+    mode: "go-w"
+
+- name: Add Java alternatives
+  alternatives:
+    name: java
+    link: /usr/bin/java
+    path: /usr/java/jdk1.7.0_80/bin/java
+
+- name: Add Java alternatives
+  alternatives:
+    name: javac
+    link: /usr/bin/javac
+    path: /usr/java/jdk1.7.0_80/bin/javac
+
+- name: Add Java alternatives
+  alternatives:
+    name: javaws
+    link: /usr/bin/javaws
+    path: /usr/java/jdk1.7.0_80/bin/javaws
