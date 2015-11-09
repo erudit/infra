@@ -18,6 +18,7 @@ Infrastructure deployment and automation scripts
 
 - MariaDB
 - PostgreSQL
+- Java
 - Tomcat
 - SOLR
 - Fedora-Commons
