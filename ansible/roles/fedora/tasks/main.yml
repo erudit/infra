@@ -8,7 +8,7 @@
 - name: Download Fedora-Commons source
   get_url:
     url: http://sourceforge.net/projects/fedora-commons/files/fedora/{{ fedora_version }}/fcrepo-installer-{{ fedora_version }}.jar
-    dest: {{ download_dir }}/fcrepo-installer-{{ fedora_version }}.jar
+    dest: "{{ download_dir }}/fcrepo-installer-{{ fedora_version }}.jar"
   when: ansible_os_family ==  "Debian"
 
 - name: Download Fedora-Commons source
@@ -36,6 +36,14 @@
 - name: Install Fedora-Commons
   command: /usr/bin/java -jar {{ download_dir }}/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat7/fedora
   when: ansible_os_family ==  "Debian"
+
+- name: change fedora ownership debian
+  file:
+    path: /var/lib/tomcat7
+    owner: tomcat7
+    group: tomcat7
+    state: directory
+    recurse: yes
 
 - name: Wait until the webapps are installed Redhat
   wait_for:

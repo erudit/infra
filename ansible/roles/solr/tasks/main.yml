@@ -2,16 +2,16 @@
 - name: Downloading SOLR
   get_url:
     url: http://archive.apache.org/dist/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz
-    dest: {{ download_dir }}/solr-{{ solr_version }}.tgz
+    dest: "{{ download_dir }}/solr-{{ solr_version }}.tgz"
 
 - name: Downloading commons-logging
   get_url:
     url: http://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.2/commons-logging-1.1.2.jar
-    dest: {{ download_dir }}/commons-logging-1.1.2.jar
+    dest: "{{ download_dir }}/commons-logging-1.1.2.jar"
 
 - name: Extracting SOLR
   unarchive:
-    src: {{ download_dir }}/solr-{{ solr_version }}.tgz
+    src: "{{ download_dir }}/solr-{{ solr_version }}.tgz"
     dest: /tmp
     copy: no
 
