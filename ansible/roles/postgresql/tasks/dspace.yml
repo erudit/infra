@@ -1,0 +1,17 @@
+---
+- name: Create dspace database
+  become_user: postgres
+  postgresql_db:
+    name: "{{ dspace_db_name }}"
+    encoding: "UTF-8"
+    state: present
+
+- name: Create dspace user
+  become_user: postgres
+  postgresql_user:
+    name: "{{ dspace_db_user }}"
+    password: "{{ dspace_db_password }}"
+    db: "{{ dspace_db_name }}"
+    state: present
+    priv: ALL
+    role_attr_flags: CREATEDB

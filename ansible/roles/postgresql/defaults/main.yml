@@ -7,3 +7,8 @@ postgresql_password: postgres
 #Odoo Configuration
 odoo_db_user: odoo
 odoo_db_password: odoo
+
+#Dspace Configuration
+dspace_db_user: dspace
+dspace_db_name: dspace
+dspace_db_password: dspace

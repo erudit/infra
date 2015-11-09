@@ -1,2 +1,3 @@
 postgresql_password: postgres
 odoo_db_password: odoo
+dspace_db_password: dspace

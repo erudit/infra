@@ -46,3 +46,5 @@
 
 #Odoo configuration
 - include: odoo.yml
+#Dspace configuration
+- include: dspace.yml
