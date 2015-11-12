@@ -1,0 +1,5 @@
+---
+#Database Configuration
+dspace_db_user: dspace
+dspace_db_name: dspace
+dspace_db_password: dspace

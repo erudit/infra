@@ -1,0 +1,62 @@
+---
+- name: Copy Dspace data folder
+  synchronize:
+    src: dspace
+    dest: /vagrant/
+    recursive: yes
+
+- name: Copy Dspace webapps folder
+  synchronize:
+    src: depot
+    dest: /vagrant/
+    recursive: yes
+
+- name: Install Dspace webapps
+  command: cp -r /vagrant/depot/webapps/dspace {{ tomcat_directory }}/webapps/
+  args:
+    creates: "{{ tomcat_directory }}/webapps/dspace"
+  notify:
+    - restart tomcat7
+
+- name: Install Dspace-oai webapps
+  command: cp -r /vagrant/depot/webapps/dspace-oai {{ tomcat_directory }}/webapps/
+  args:
+    creates: "{{ tomcat_directory }}/webapps/dspace-oai"
+  notify:
+    - restart tomcat7
+
+- name: Copy web.xml into the webapps folder
+  template:
+    src: web.xml.j2
+    dest: "{{ tomcat_directory }}/webapps/dspace/WEB-INF/web.xml"
+    owner: tomcat7
+    group: tomcat7
+  notify:
+    - restart tomcat7
+
+- name: Copy dspace configuration
+  template:
+    src: dspace.cfg.j2
+    dest: "{{ dspace_directory }}/DATA/config/dspace.cfg"
+    owner: tomcat7
+    group: tomcat7
+  notify:
+    - restart tomcat7
+
+- name: Copy dspace configuration
+  template:
+    src: log4j.properties.j2
+    dest: "{{ dspace_directory }}/DATA/config/log4j.properties"
+    owner: tomcat7
+    group: tomcat7
+  notify:
+    - restart tomcat7
+
+- name: Copy dspace configuration
+  template:
+    src: log4j.xml.j2
+    dest: "{{ dspace_directory }}/DATA/config/log4j.xml"
+    owner: tomcat7
+    group: tomcat7
+  notify:
+    - restart tomcat7

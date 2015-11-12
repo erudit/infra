@@ -1,0 +1,19 @@
+---
+#Database Configuration
+dspace_db_user: dspace
+dspace_db_name: dspace
+dspace_db_password: dspace
+dspace_db_port: 5432
+#Vagrant configuration
+dspace_db_host: "{{ hostvars[groups['postgresql'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#dspace_db_host: "{{ hostvars[groups['postgresql'][0]]['ansible_default_ipv4']['address']}}"
+
+#Dspace Configuration
+dspace_directory: /vagrant/dspace
+dspace_from_email: example@example.com
+dspace_email: example@example.com
+dspace_address: "{{ hostvars[groups['tomcat'][0]]['ansible_eth1']['ipv4']['address'] }}"
+
+# Tomcat Configuration
+tomcat_directory: /var/lib/tomcat7
