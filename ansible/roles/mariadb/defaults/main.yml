@@ -24,6 +24,11 @@ icinga2_db_name: icinga
 icinga2_db_user: icinga
 icinga2_db_password: icinga
 
+#Ojs configuration
+ojs_db_name: ojs
+ojs_db_user: ojs
+ojs_db_password: ojsojs
+
 #Mariadb config
 mariadb_port: 3306
 mysql_root_password: root

@@ -19,5 +19,9 @@ drupal_db_user: drupal
 icinga2_db_name: icinga
 icinga2_db_user: icinga
 
+#Ojs configuration
+ojs_db_name: ojs
+ojs_db_user: ojs
+
 #Mariadb config
 mariadb_port: 3306

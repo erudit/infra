@@ -1,0 +1,32 @@
+---
+- name: Download OJS source
+  get_url:
+    url: http://pkp.sfu.ca/ojs/download/ojs-{{ ojs_version }}.tar.gz
+    dest: /tmp/ojs-{{ ojs_version }}.tar.gz
+
+- name: Extract OJS source
+  unarchive:
+    src: /tmp/ojs-{{ ojs_version }}.tar.gz
+    dest: "{{ apache_document_root }}/"
+    owner: www-data
+    group: www-data
+    copy: no
+
+- name: Rename OJS folder
+  command: mv {{ apache_document_root }}/ojs-{{ ojs_version }} {{ apache_document_root }}/ojs
+  args:
+    creates: "{{ apache_document_root }}/ojs"
+
+- name: Copy config.inc.php
+  template:
+    src: config.inc.php.j2
+    dest: "{{ apache_document_root }}/ojs/config.inc.php"
+    owner: www-data
+    group: www-data
+
+- name: Create OJS files folder
+  file:
+    path: /var/files
+    state: directory
+    owner: www-data
+    group: www-data

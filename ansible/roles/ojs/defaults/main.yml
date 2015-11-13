@@ -1,0 +1,14 @@
+---
+ojs_version: 2.4.7-1
+ojs_files_directory: /var/files
+# Database configuration
+ojs_db_user: ojs
+ojs_db_name: ojs
+ojs_db_password: ojsojs
+# Vagrant configuration only
+ojs_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_eth1']['ipv4']['address'] }}"
+# Server configuration
+#ojs_db_host: "{{ hostvars[groups['mariadb'][0]]['ansible_default_ipv4']['address']}}"
+
+#Apache configuration
+apache_document_root: /var/www

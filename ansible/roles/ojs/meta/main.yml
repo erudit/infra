@@ -1,0 +1,4 @@
+---
+depedencies:
+  - { role: apache }
+  - { role: php }

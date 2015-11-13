@@ -70,3 +70,5 @@
 - include: drupal.yml
 #Icinga configuration
 - include: icinga.yml
+#Ojs configuration
+- include: ojs.yml

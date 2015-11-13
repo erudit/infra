@@ -1,0 +1,15 @@
+---
+#Gather facts for the mariadb host######
+- hosts: mariadb
+  name: Gather facts from the database server
+  tasks: [ ]
+#########################################################
+
+- name: Install Ojs
+  hosts: apache
+  sudo: yes
+
+  roles:
+    - common
+    - monitoring
+    - ojs
