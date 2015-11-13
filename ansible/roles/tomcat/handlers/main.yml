@@ -1,16 +1,16 @@
 ---
 - name: restart tomcat
-  service: 
+  service:
     name: tomcat
     state: restarted
 
 - name: restart tomcat7
-  service: 
+  service:
     name: tomcat7
     state: restarted
 
 - name: change tomcat ownership redhat
-  file: 
+  file:
     path: "{{ tomcat_home_redhat}}/"
     owner: tomcat
     group: tomcat
@@ -19,7 +19,7 @@
   when: ansible_os_family ==  'RedHat'
 
 - name: change tomcat ownership debian
-  file: 
+  file:
     path: "{{ tomcat_home_debian }}/"
     owner: tomcat7
     group: tomcat7

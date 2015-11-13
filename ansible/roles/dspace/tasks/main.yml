@@ -17,6 +17,7 @@
     creates: "{{ tomcat_directory }}/webapps/dspace"
   notify:
     - restart tomcat7
+    - change tomcat ownership debian
 
 - name: Install Dspace-oai webapps
   command: cp -r /vagrant/depot/webapps/dspace-oai {{ tomcat_directory }}/webapps/
@@ -24,6 +25,7 @@
     creates: "{{ tomcat_directory }}/webapps/dspace-oai"
   notify:
     - restart tomcat7
+    - change tomcat ownership debian
 
 - name: Copy web.xml into the webapps folder
   template:

@@ -39,7 +39,7 @@ handle.canonical.prefix = {{ dspace_address }}
 id.suffixe = dd
 
 # DSpace host name - should match base URL.  Do not include port number
-dspace.hostname = depot.erudit.org
+dspace.hostname = {{ dspace_address }}
 
 # Name of the site
 dspace.name = \u00C9rudit | D\u00E9p\u00F4t de documents
@@ -137,7 +137,7 @@ default.language = fr_CA
 ##### File Storage ######
 
 # Asset (bitstream) store number 0 (zero)
-assetstore.dir = {{ dspace_directory }}/data/assetstore
+assetstore.dir = {{ dspace_directory }}/DATA/assetstore
 
 # Specify extra asset stores like this, counting from 1 upwards:
 # assetstore.dir.1 = /second/assetstore
@@ -218,7 +218,7 @@ assetstore.dir = {{ dspace_directory }}/data/assetstore
 # log.init.config = C:/usr/local/dspace/1.5.0_instal/config/log4j.xml
 # log.init.config = C:/usr/local/dspace/1.5.0_instal/config/log4j-console.properties
 
-log.init.config = {{ dspace_directory }}/data/config/log4j.properties
+log.init.config = {{ dspace_directory }}/DATA/config/log4j.properties
 
 # Where to put the logs (used in configuration only)
 log.dir = {{ dspace_directory }}/DATA/log
@@ -227,7 +227,7 @@ log.dir = {{ dspace_directory }}/DATA/log
 ##### Search settings #####
 
 # Where to put search index files
-search.dir = {{ dspace_directory }}/data/search
+search.dir = {{ dspace_directory }}/DATA/search
 
 # Higher values of search.max-clauses will enable prefix searches to work on
 # large repositories
