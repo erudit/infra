@@ -62,3 +62,12 @@
     group: tomcat7
   notify:
     - restart tomcat7
+
+- name: Copy web.xml into the dspace-oai webapps folder
+  template:
+    src: dspace-oai-web.xml.j2
+    dest: "{{ tomcat_directory }}/webapps/dspace-oai/WEB-INF/web.xml"
+    owner: tomcat7
+    group: tomcat7
+  notify:
+    - restart tomcat7
