@@ -1,52 +1,83 @@
-VAGRANTFILE_API_VERSION = "2"
+# -*- mode: ruby -*-
 
-# Debian box
+# vi: set ft=ruby :
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+boxes = [
+    {
+        :name => "apache",
+        :eth1 => "192.168.35.10",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "apache-server"
+    },
+    {
+        :name => "nginx",
+        :eth1 => "192.168.35.11",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "nginx-server"
+    },
+    {
+        :name => "app",
+        :eth1 => "192.168.35.12",
+        :mem => "1024",
+        :cpu => "1",
+        :hostname => "app-server"
+    },
+    {
+        :name => "db",
+        :eth1 => "192.168.35.13",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "db-server"
+    },
+    {
+        :name => "gitlab",
+        :eth1 => "192.168.35.14",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "gitlab-server"
+    },
+    {
+        :name => "odoo",
+        :eth1 => "192.168.35.15",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "odoo-server"
+    },
+    {
+        :name => "redmine",
+        :eth1 => "192.168.35.16",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "redmine-server"
+    },
+    {
+        :name => "monitoring",
+        :eth1 => "192.168.35.17",
+        :mem => "512",
+        :cpu => "1",
+        :hostname => "monitoring-server"
+    },
+]
+
+Vagrant.configure(2) do |config|
+
   # Use the same key for each machine
   config.ssh.insert_key = false
 
-  config.vm.define "apache" do |vagrant1|
-    vagrant1.vm.hostname = "apache-server"
-    vagrant1.vm.box = "debian/jessie64"
-    vagrant1.vm.network "private_network", ip: "192.168.35.10"
-  end
-  config.vm.define "nginx" do |vagrant2|
-    vagrant2.vm.hostname = "nginx-server"
-    vagrant2.vm.box = "debian/jessie64"
-    vagrant2.vm.network "private_network", ip: "192.168.35.11"
-  end
-  config.vm.define "app" do |vagrant3|
-    vagrant3.vm.hostname = "app-server"
-    vagrant3.vm.box = "debian/jessie64"
-    vagrant3.vm.network "private_network", ip: "192.168.35.12"
-  end
-  config.vm.define "db" do |vagrant4|
-    vagrant4.vm.hostname = "db-server"
-    vagrant4.vm.box = "debian/jessie64"
-    vagrant4.vm.network "private_network", ip: "192.168.35.13"
-  end
-  config.vm.define "gitlab" do |vagrant5|
-    vagrant5.vm.hostname = "gitlab-server"
-    vagrant5.vm.box = "debian/jessie64"
-    vagrant5.vm.network "private_network", ip: "192.168.35.14"
-  end
-  config.vm.define "odoo" do |vagrant6|
-    vagrant6.vm.hostname = "odoo-server"
-    vagrant6.vm.box = "debian/jessie64"
-    vagrant6.vm.network "private_network", ip: "192.168.35.15"
-  end
-  config.vm.define "redmine" do |vagrant7|
-    vagrant7.vm.hostname = "redmine-server"
-    vagrant7.vm.box = "debian/jessie64"
-    vagrant7.vm.network "private_network", ip: "192.168.35.16"
-  end
-  config.vm.define "monitoring" do |vagrant8|
-    vagrant8.vm.hostname = "monitoring-server"
-    vagrant8.vm.box = "debian/jessie64"
-    vagrant8.vm.network "private_network", ip: "192.168.35.17"
-  end
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "512"
+  config.vm.box = "debian/jessie64"
+
+  boxes.each do |opts|
+    config.vm.define opts[:name] do |config|
+      config.vm.hostname = opts[:hostname]
+
+      config.vm.provider "virtualbox" do |v|
+        v.customize ["modifyvm", :id, "--memory", opts[:mem]]
+        v.customize ["modifyvm", :id, "--cpus", opts[:cpu]]
+      end
+
+      config.vm.network :private_network, ip: opts[:eth1]
+    end
   end
 end
