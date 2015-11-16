@@ -1,6 +1,8 @@
 #folder
 downloads/
 .vagrant/
+depot/
+dspace/
 
 #files
 *.box
