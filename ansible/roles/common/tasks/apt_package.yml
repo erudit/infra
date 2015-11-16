@@ -17,3 +17,4 @@
     - python-keyczar
     - python-selinux
     - unzip
+    - htop
