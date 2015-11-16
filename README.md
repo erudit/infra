@@ -31,3 +31,5 @@ Infrastructure deployment and automation scripts
 - Icinga2 + Icingaweb2 (In progress)
 - Wordpress
 - Drupal
+- OJS
+- Dspace

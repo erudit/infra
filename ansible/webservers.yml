@@ -1,8 +1,9 @@
 ---
-- name: Install WordPress and Drupal
+- name: Install WordPress, Drupal and OJS
   hosts: webservers
   sudo: yes
 
 - include: db.yml
 - include: wordpress.yml
 - include: drupal.yml
+- include: ojs.yml
