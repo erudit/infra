@@ -31,12 +31,16 @@
 - meta: flush_handlers
 
 - name: Enable icinga2 feature command
-  command: icinga2 feature enable command creates=/etc/icinga2/features-enabled/command.conf
+  command: icinga2 feature enable command
+  args:
+    creates: /etc/icinga2/features-enabled/command.conf
   notify:
     - restart icinga2
 
 - name: Enable icinga2 feature ido-mysql
-  command: icinga2 feature enable ido-mysql creates=/etc/icinga2/features-enabled/ido-mysql.conf
+  command: icinga2 feature enable ido-mysql
+  args:
+    creates: /etc/icinga2/features-enabled/ido-mysql.conf
   notify:
     - restart icinga2
 

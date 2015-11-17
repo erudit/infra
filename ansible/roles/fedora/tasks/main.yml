@@ -30,11 +30,15 @@
   when: ansible_os_family ==  "Debian"
 
 - name: Install Fedora-Commons
-  command: /usr/bin/java -jar /home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat/fedora
+  command: /usr/bin/java -jar /home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties
+  args:
+    creates: /var/lib/tomcat/fedora
   when: ansible_os_family ==  'RedHat'
 
 - name: Install Fedora-Commons
-  command: /usr/bin/java -jar {{ download_dir }}/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties creates=/var/lib/tomcat7/fedora
+  command: /usr/bin/java -jar {{ download_dir }}/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties
+  args:
+    creates: /var/lib/tomcat7/fedora
   when: ansible_os_family ==  "Debian"
 
 - name: change fedora ownership debian

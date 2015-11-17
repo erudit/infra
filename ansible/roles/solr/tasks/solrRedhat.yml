@@ -1,19 +1,27 @@
 ---
 - name: Installing the SOLR webapps
-  command: cp /tmp/solr-{{ solr_version }}/dist/solr-{{ solr_version }}.war {{ tomcat_home_redhat }}/webapps/solr.war creates="{{ tomcat_home_redhat }}/webapps/solr.war"
+  command: cp /tmp/solr-{{ solr_version }}/dist/solr-{{ solr_version }}.war {{ tomcat_home_redhat }}/webapps/solr.war
+  args:
+    creates: "{{ tomcat_home_redhat }}/webapps/solr.war"
 
 - name: Copy commons-logging libs in the Tomcat folder
-  command: cp {{ download_dir }}/commons-logging-1.1.2.jar {{ tomcat_lib_redhat }} creates="{{ tomcat_lib_redhat }}/commons-logging-1.1.2.jar"
+  command: cp {{ download_dir }}/commons-logging-1.1.2.jar {{ tomcat_lib_redhat }}
+  args:
+    creates: "{{ tomcat_lib_redhat }}/commons-logging-1.1.2.jar"
 
 - name: Copy slf4j libs in the Tomcat folder
-  command: cp /tmp/solr-{{ solr_version }}/example/lib/ext/{{item}} {{ tomcat_lib_redhat }} creates="{{ tomcat_lib_redhat }}/{{item}}"
+  command: cp /tmp/solr-{{ solr_version }}/example/lib/ext/{{item}} {{ tomcat_lib_redhat }}
+  args:
+    creates: "{{ tomcat_lib_redhat }}/{{item}}"
   with_items:
     - slf4j-api-1.7.6.jar
     - slf4j-log4j12-1.7.6.jar
     - log4j-1.2.17.jar
 
 - name: Installing SOLR
-  command: cp -r /tmp/solr-{{ solr_version }}/example/solr {{ solr_home_redhat }} creates="{{ solr_home_redhat }}"
+  command: cp -r /tmp/solr-{{ solr_version }}/example/solr {{ solr_home_redhat }}
+  args:
+    creates: "{{ solr_home_redhat }}"
 
 - name: Copying the schema.xml template
   template:

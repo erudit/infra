@@ -20,7 +20,8 @@
 
 - name: Rename Drupal folder
   command: mv /var/www/drupal-{{ drupal_version }}/ /var/www/drupal/
-    creates=/var/www/drupal/
+  args:
+    creates: /var/www/drupal/
 
 - name: Copy settings.php
   template:
