@@ -26,3 +26,4 @@
   command: "psql -U {{ dspace_db_user }} -f /tmp/dspaceTEST.sql -d {{ dspace_db_name }} -h localhost"
   environment:
     PGPASSWORD: "{{ dspace_db_password }}"
+  ignore_errors: yes
