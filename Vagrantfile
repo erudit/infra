@@ -66,7 +66,7 @@ Vagrant.configure(2) do |config|
   # Use the same key for each machine
   config.ssh.insert_key = false
 
-  config.vm.box = "debian/jessie64"
+  config.vm.box = "centos/7"
 
   boxes.each do |opts|
     config.vm.define opts[:name] do |config|
