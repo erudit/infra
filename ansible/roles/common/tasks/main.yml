@@ -18,6 +18,7 @@
     - en_US.UTF-8
     - fr_CA.UTF-8
     - fr_FR.UTF-8
+  when: ansible_os_family == 'Debian'
 
 - name: Copy .bashrc in the root user home folder
   template:
