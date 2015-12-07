@@ -1,6 +1,6 @@
 ---
 munin_htmldir: /var/www/html/munin
-munin_dbdir:	/var/lib/munin
+munin_dbdir: /var/lib/munin
 munin_logdir: /var/log/munin
-munin_rundir:  /var/run/munin
+munin_rundir: /var/run/munin
 munin_tmpldir: /etc/munin/templates
