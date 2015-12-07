@@ -1,11 +1,14 @@
 ---
 - include: apt_package.yml
   when: ansible_os_family ==  'Debian'
+- include: yum_package.yml
+  when: ansible_os_family ==  'RedHat'
 
 - name: Activate fcgid module
   apache2_module:
     name: fcgid
     state: present
+  when: ansible_os_family == 'Debian'
 
 - name: Create munin htmldir
   file:
@@ -28,3 +31,10 @@
     dest: /etc/munin/apache24.conf
   notify:
     - restart apache2
+
+- name: Copy apache24.conf file
+  template:
+    src: apache24.conf.j2
+    dest: /etc/munin/apache24.conf
+  notify:
+    - restart httpd

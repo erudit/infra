@@ -4,7 +4,7 @@
     name: "http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm"
     state: present
 
-- name: Install useful package Redhat
+- name: Install useful package RedHat
   yum:
     name: "{{ item }}"
   with_items:

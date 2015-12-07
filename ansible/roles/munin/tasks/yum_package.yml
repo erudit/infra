@@ -1,0 +1,10 @@
+---
+- name: Install munin package
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - munin
+    - munin-node
+    - mod_fcgid
