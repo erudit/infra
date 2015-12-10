@@ -3,46 +3,8 @@
   when: ansible_os_family ==  "Debian"
 - include: yum_package.yml
   when: ansible_os_family ==  'RedHat'
+  
 - include_vars: postgresql_pass.yml
-
-- name: Start postgresql
-  service:
-    name: postgresql
-    state: started
-    enabled: yes
-
-- name: Copy configuration file
-  template:
-    src: pg_hba.conf.j2
-    dest: /etc/postgresql/9.4/main/pg_hba.conf
-  notify:
-    - restart postgresql
-
-- name: Copy configuration file
-  template:
-    src: postgresql.conf.j2
-    dest: /etc/postgresql/9.4/main/postgresql.conf
-  notify:
-    - restart postgresql
-
-- name: Copy .pgpass file
-  template:
-    src: pgpass.j2
-    dest: /root/.pgpass
-    mode: 0600
-
-- name: Copy .pgpass file
-  template:
-    src: pgpass.j2
-    dest: /var/lib/postgresql/.pgpass
-    owner: postgres
-    mode: 0600
-
-- name: Set postgres user password
-  become_user: postgres
-  postgresql_user:
-    name: postgres
-    password: "{{ postgresql_password }}"
 
 #Odoo configuration
 - include: odoo.yml
