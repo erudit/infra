@@ -1,26 +1,5 @@
 ---
-- name: Add Icinga repository key
-  apt_key:
-    url: http://packages.icinga.org/icinga.key
-    state: present
-
-- name: Add Icinga repository
-  apt_repository:
-    repo: "deb http://packages.icinga.org/debian icinga-jessie main"
-    state: present
-
-- name: Add Icinga repository
-  apt_repository:
-    repo: "deb-src http://packages.icinga.org/debian icinga-jessie main"
-    state: present
-
-- name: Install Icinga-web package
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-  with_items:
-    - icingaweb2
-    - icingaweb2-module-doc
-    - icingaweb2-module-monitoring
-    - icingaweb2-module-setup
+- include: apt_package.yml
+  when: ansible_os_family == 'Debian'
+- include: yum_package.yml
+  when: ansible_os_family == 'RedHat'
