@@ -1,12 +1,12 @@
 ---
 - name: Install Bind
-  apt:
+  yum:
     name: "{{ item }}"
     update_cache: yes
     state: present
   with_items:
-    - bind9
-    - bind9utils
+    - bind
+    - bind-utils
 
 - name: Create /var/cache/bind/erudit/ folder
   file:
@@ -23,16 +23,16 @@
 - name: Copy BIND9 configuration files Master
   template:
     src: namedMaster.conf.local.j2
-    dest: /etc/bind/named.conf.local
+    dest: /etc/named.conf.local
   when: bind_master
 
 - name: Copy BIND9 configuration files Slave
   template:
     src: namedSlave.conf.local.j2
-    dest: /etc/bind/named.conf.local
+    dest: /etc/named.conf.local
   when: not bind_master
 
 - name: Copy BIND9 configuration files
   template:
     src: named.conf.options.j2
-    dest: /etc/bind/named.conf.options
+    dest: /etc/named.conf.options
