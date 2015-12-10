@@ -1,0 +1,29 @@
+---
+- name: Add Icinga repository key
+  apt_key:
+    url: http://packages.icinga.org/icinga.key
+    state: present
+
+- name: Add Icinga repository
+  apt_repository:
+    repo: "deb http://packages.icinga.org/debian icinga-jessie main"
+    state: present
+
+- name: Add Icinga repository
+  apt_repository:
+    repo: "deb-src http://packages.icinga.org/debian icinga-jessie main"
+    state: present
+
+- name: Install icinga
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items:
+    - icinga2
+    - icinga2-ido-mysql
+    - python-mysqldb
+  notify:
+    - import icinga2 default database
+
+- meta: flush_handlers

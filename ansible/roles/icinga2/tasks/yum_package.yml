@@ -1,0 +1,25 @@
+---
+- name: Add Icinga repository key
+  rpm_key:
+    key: http://packages.icinga.org/icinga.key
+    state: present
+
+- name: Add Icinga repository
+  yum:
+    name: "http://packages.icinga.org/epel/7/release/noarch/icinga-rpm-release-7-1.el7.centos.noarch.rpm"
+    state: present
+
+- name: Install icinga
+  yum:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items:
+    - icinga2
+    - icinga2-ido-mysql
+    - MySQL-python
+    - mysql
+  notify:
+    - import icinga2 default database
+
+- meta: flush_handlers
