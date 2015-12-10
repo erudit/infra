@@ -1,0 +1,21 @@
+---
+- name: Install php
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - php
+    - php-cli
+    - php-curl
+    - php-gd
+    - php-mysql
+    - php-xmlrpc
+    - php-pear
+    - php-xsl
+    - php-intl
+
+- name: Copy php.ini
+  template:
+    src: php.ini.j2
+    dest: /etc/php.ini
