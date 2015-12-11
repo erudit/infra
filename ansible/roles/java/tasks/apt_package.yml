@@ -1,0 +1,11 @@
+---
+- name: Install openjdk 7
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - openjdk-7-jdk
+    - openjdk-7-jre
+
+- include: oraclejdk-7.yml
