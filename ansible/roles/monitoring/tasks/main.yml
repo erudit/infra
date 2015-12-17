@@ -4,11 +4,16 @@
 - include: yum_package.yml
   when: ansible_os_family == 'RedHat'
 
+- name: Start munin-node
+  service:
+    name: munin-node
+    state: started
+
 - name: Copy munin-node.conf in the munin folder
   template:
     src: munin-node.conf.j2
     dest: /etc/munin/munin-node.conf
-    owner: munin
-    group: munin
+    owner: root
+    group: root
   notify:
     - restart munin-node
