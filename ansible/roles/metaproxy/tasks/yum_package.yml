@@ -1,0 +1,31 @@
+---
+- name: Add metaproxy repository key
+  rpm_key:
+    key: http://ftp.indexdata.com/pub/yum/centos/7/RPM-GPG-KEY-indexdata
+    state: present
+
+- name: Add metaproxy repository
+  get_url:
+    url: http://ftp.indexdata.com/pub/yum/centos/7/indexdata.repo
+    dest: /etc/yum.repos.d/indexdata.repo
+
+- name: Change permissions on the Metaproxy repo
+  file:
+    path: /etc/yum.repos.d/indexdata.repo
+    mode: "o+r"
+
+- name: Install metaproxy with depedencies
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    enablerepo: "indexdata*"
+  with_items:
+    - libxslt-devel
+    - libyazpp6-devel
+    - metaproxy
+    - metaproxy-doc
+    - metaproxy-debuginfo
+    - libmetaproxy6
+    - libmetaproxy6-devel
+    - yaz-illclient
