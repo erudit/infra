@@ -32,7 +32,7 @@
 - name: Install Fedora-Commons
   command: /usr/bin/java -jar /home/vagrant/sync/downloads/fcrepo-installer-{{ fedora_version }}.jar /tmp/install.properties
   args:
-    creates: /var/lib/tomcat/fedora
+    creates: /usr/share/tomcat/fedora
   when: ansible_os_family ==  'RedHat'
 
 - name: Install Fedora-Commons
@@ -48,6 +48,22 @@
     group: tomcat7
     state: directory
     recurse: yes
+  when: ansible_os_family == 'Debian'
+  notify:
+    - restart tomcat7
+
+- name: change fedora ownership Redhat
+  file:
+    path: /var/lib/tomcat
+    owner: tomcat
+    group: tomcat
+    state: directory
+    recurse: yes
+  when: ansible_os_family == 'RedHat'
+  notify:
+    - restart tomcat
+
+- meta: flush_handlers
 
 - name: Wait until the webapps are installed Redhat
   wait_for:
