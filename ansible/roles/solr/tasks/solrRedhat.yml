@@ -36,8 +36,8 @@
 - name: change tomcat ownership redhat
   file:
     path: "{{ tomcat_home_redhat }}/"
-    owner: tomcat7
-    group: tomcat7
+    owner: tomcat
+    group: tomcat
     state: directory
     recurse: yes
-  notify: restart tomcat7
+  notify: restart tomcat
