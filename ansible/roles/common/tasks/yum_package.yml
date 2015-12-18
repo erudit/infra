@@ -16,3 +16,4 @@
     - python-keyczar
     - unzip
     - htop
+    - wget
