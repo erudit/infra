@@ -1,0 +1,16 @@
+---
+- name: Add odoo repository
+  get_url:
+    url: 'https://nightly.odoo.com/8.0/nightly/rpm/odoo.repo'
+    dest: /etc/yum.repos.d/odoo.repo
+
+- name: Install odoo
+  yum:
+    name: odoo
+    state: present
+
+- name: Start odoo
+  service:
+    name: odoo
+    state: started
+    enabled: yes
