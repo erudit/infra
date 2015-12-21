@@ -6,7 +6,7 @@
     url: "https://en-ca.wordpress.org/wordpress-{{ wordpress_version }}-en_CA.zip"
     dest: "/tmp/wordpress-{{ wordpress_version }}-en_CA.zip"
 
-- name: Unzip WordPress source
+- name: Unzip WordPress source Debian
   unarchive:
     src: "/tmp/wordpress-{{ wordpress_version }}-en_CA.zip"
     dest: /var/www/
@@ -14,10 +14,30 @@
     creates: /var/www/wordpress/
     owner: www-data
     group: www-data
+  when: ansible_os_family == 'Debian'
 
-- name: Copy wp-config.php file
+- name: Unzip WordPress source RedHat
+  unarchive:
+    src: "/tmp/wordpress-{{ wordpress_version }}-en_CA.zip"
+    dest: /var/www/
+    copy: no
+    creates: /var/www/wordpress/
+    owner: apache
+    group: apache
+  when: ansible_os_family == 'RedHat'
+
+- name: Copy wp-config.php file Debian
   template:
     src: wp-config.php.j2
     dest: /var/www/wordpress/wp-config.php
     owner: www-data
     group: www-data
+  when: ansible_os_family == 'Debian'
+
+- name: Copy wp-config.php file RedHat
+  template:
+    src: wp-config.php.j2
+    dest: /var/www/wordpress/wp-config.php
+    owner: apache
+    group: apache
+  when: ansible_os_family == 'RedHat'
