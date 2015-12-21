@@ -4,29 +4,57 @@
     url: http://pkp.sfu.ca/ojs/download/ojs-{{ ojs_version }}.tar.gz
     dest: /tmp/ojs-{{ ojs_version }}.tar.gz
 
-- name: Extract OJS source
+- name: Extract OJS source Debian
   unarchive:
     src: /tmp/ojs-{{ ojs_version }}.tar.gz
-    dest: "{{ apache_document_root }}/"
+    dest: "/var/www/"
     owner: www-data
     group: www-data
     copy: no
+  when: ansible_os_family == 'Debian'
+
+- name: Extract OJS source Redhat
+  unarchive:
+    src: /tmp/ojs-{{ ojs_version }}.tar.gz
+    dest: "/var/www/"
+    owner: apache
+    group: apache
+    copy: no
+  when: ansible_os_family == 'RedHat'
 
 - name: Rename OJS folder
-  command: mv {{ apache_document_root }}/ojs-{{ ojs_version }} {{ apache_document_root }}/ojs
+  command: mv /var/www/ojs-{{ ojs_version }} /var/www/ojs
   args:
-    creates: "{{ apache_document_root }}/ojs"
+    creates: "/var/www/ojs"
 
-- name: Copy config.inc.php
+- name: Copy config.inc.php Debian
   template:
     src: config.inc.php.j2
-    dest: "{{ apache_document_root }}/ojs/config.inc.php"
+    dest: "/var/www/ojs/config.inc.php"
     owner: www-data
     group: www-data
+  when: ansible_os_family == 'Debian'
 
-- name: Create OJS files folder
+- name: Copy config.inc.php RedHat
+  template:
+    src: config.inc.php.j2
+    dest: "/var/www/ojs/config.inc.php"
+    owner: apache
+    group: apache
+  when: ansible_os_family == 'RedHat'
+
+- name: Create OJS files folder Debian
   file:
     path: /var/files
     state: directory
     owner: www-data
     group: www-data
+  when: ansible_os_family == 'Debian'
+
+- name: Create OJS files folder RedHat
+  file:
+    path: /var/files
+    state: directory
+    owner: apache
+    group: apache
+  when: ansible_os_family == 'RedHat'
