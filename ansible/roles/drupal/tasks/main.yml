@@ -2,14 +2,17 @@
 - include_vars: drupal_pass.yml
 
 #Drush installation
-- include: drush.yml
+- include: apt_package.yml
+  when: ansible_os_family == 'Debian'
+- include: yum_package.yml
+  when: ansible_os_family == 'RedHat'
 
 - name: Download Drupal 7 source
   get_url:
     url: "http://ftp.drupal.org/files/projects/drupal-{{ drupal_version }}.tar.gz"
     dest: "/tmp/drupal-{{ drupal_version }}.tar.gz"
 
-- name: Unzip Drupal source
+- name: Unzip Drupal source Debian
   unarchive:
     src: "/tmp/drupal-{{ drupal_version }}.tar.gz"
     dest: /var/www/
@@ -17,6 +20,17 @@
     creates: /var/www/drupal/
     owner: www-data
     group: www-data
+  when: ansible_os_family == 'Debian'
+
+- name: Unzip Drupal source RedHat
+  unarchive:
+    src: "/tmp/drupal-{{ drupal_version }}.tar.gz"
+    dest: /var/www/
+    copy: no
+    creates: /var/www/drupal/
+    owner: apache
+    group: apache
+  when: ansible_os_family == 'RedHat'
 
 - name: Rename Drupal folder
   command: mv /var/www/drupal-{{ drupal_version }}/ /var/www/drupal/
@@ -29,3 +43,12 @@
     dest: /var/www/drupal/sites/default/settings.php
     owner: www-data
     group: www-data
+  when: ansible_os_family == 'Debian'
+
+- name: Copy settings.php RedHat
+  template:
+    src: settings.php.j2
+    dest: /var/www/drupal/sites/default/settings.php
+    owner: apache
+    group: apache
+  when: ansible_os_family == 'RedHat'
