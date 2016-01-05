@@ -1,22 +1,22 @@
 ---
 - name: Add Adobe Repo Debian
-  apt_repository: 
+  apt_repository:
     repo: "deb http://ftp.ca.debian.org/debian// jessie main contrib non-free"
     state: present
 
 - name: Install flash-plugin package
-  apt: 
+  apt:
     name: flashplugin-nonfree
     state: present
     update_cache: yes
 
 - name: Create symbolic link
-  file: 
+  file:
     src: /usr/share/tomcat7/lib
     path: /var/lib/tomcat7/common/lib
     state: link
 
 - name: Download mysql-connection-java Debian
-  get_url: 
+  get_url:
     url: http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar
     dest: /usr/share/tomcat7/lib/mysql-connector-java-5.1.6.jar
